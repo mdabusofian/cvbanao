@@ -185,6 +185,57 @@ input.bad,textarea.bad,select.bad{border-color:#e5484d!important;background:#fff
 .ats-kw{margin-top:14px;font-size:14px}
 .ats-kw .chips{margin-top:8px}
 .ats-disc{font-size:12.5px;color:var(--mute);margin:14px 0 0;padding:10px 12px;background:#fbfcfb;border-radius:12px;border:1px dashed #d6e2dc}
+
+/* ---- pages (A4) ---- */
+.pgbox{position:relative;width:794px;height:1123px;overflow:hidden;background:#fff;margin:0 auto 26px;box-shadow:0 18px 40px rgba(5,38,28,.18);border-radius:4px}
+.pgbox>.cv{min-height:1123px;box-sizing:border-box}
+.pgbox.p2>.cv{padding-top:56px}
+.pgbox .runhd{position:absolute;left:0;right:0;top:0;height:56px;display:flex;justify-content:space-between;align-items:center;padding:0 28px;background:#f4f7f6;border-bottom:2px solid #d6e2dc;font-size:13px;color:#334155;z-index:2}
+.pgbox .runhd b{font-size:14px;color:#0f172a}
+.cv.nohdr .hd{display:none!important}
+.measure{position:absolute!important;left:-10000px!important;top:0!important;height:auto!important;margin:0!important;box-shadow:none!important}
+.measure>.cv{min-height:0!important}
+/* ---- in-step navigation ---- */
+.navrow{display:flex;gap:12px;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px dashed #d6e2dc}
+.nvb{flex:1;max-width:260px;min-height:52px;border-radius:15px;font:700 15px "Hind Siliguri",sans-serif;padding:12px 16px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.nvb:hover{transform:translateY(-2px)}
+.nvb.ghost{background:#fff;border:1.5px solid #d6e2dc;color:var(--ink)}
+.nvb.nxt{border:0;color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2));box-shadow:0 10px 24px rgba(11,107,79,.28)}
+#v3 .card:first-child h2{font-size:18px}
+/* ---- mobile polish ---- */
+@media (max-width:640px){
+ .card{padding:18px 16px;margin-top:14px}
+ .card h2{font-size:17px}
+ input,select,textarea{font-size:16px;min-height:52px;padding:12px 14px;border-radius:14px}
+ textarea{min-height:110px}
+ label{font-size:14px;margin:14px 0 6px}
+ .btn{min-height:54px;font-size:16px}
+ .sm{min-height:46px}
+ .navrow{position:relative}
+ .nvb{min-height:54px;font-size:15px;max-width:none}
+ .sh h2{font-size:24px;line-height:1.25}
+ .sh p{font-size:14.5px}
+ .bar{padding:10px 14px 2px}
+ .bl b{font-size:16px}
+ .stp{padding:4px 6px 12px}
+ .sd{min-width:48px}
+ .sd span{font-size:11px;line-height:1.2}
+ #pvw{padding:10px;border-radius:14px}
+ .foot button{min-height:52px}
+}
+@media (max-width:440px){.navrow{flex-direction:row}.nvb{font-size:14px;padding:10px 10px}}
+/* ---- professional header & footer ---- */
+.hdw{background:linear-gradient(160deg,#021710 0%,#05261c 55%,#0b4d3a 100%)!important}
+.bar{padding-top:16px;padding-bottom:6px}
+.bl b{letter-spacing:.3px}
+.bl small{color:#8fd3b6}
+.hn a{font-size:14px;letter-spacing:.2px}
+.cvfoot{border-radius:26px;background:linear-gradient(170deg,#05261c,#021710);color:#a9cdbf;border:0;margin-top:56px;padding:40px 32px 22px;gap:28px}
+.cvfoot h4{color:#fff;font-size:12px;letter-spacing:1.2px}
+.cvfoot a{color:#c4e6d8;font-size:14.5px;padding:5px 0}
+.cvfoot a:hover{color:#f5c542}
+.cvfoot .fbot{color:#7fa998;border-top:1px solid rgba(255,255,255,.08);padding-top:18px;margin-top:4px}
+@media (max-width:640px){.cvfoot{margin-top:36px;padding:30px 22px 20px;border-radius:22px}.cvfoot .fbot{flex-direction:column;align-items:flex-start;gap:8px}}
 </style>
 <style id="cvcss"></style>
 <link rel="icon" href="favicon.png" type="image/png">
@@ -206,18 +257,18 @@ input.bad,textarea.bad,select.bad{border-color:#e5484d!important;background:#fff
 
 <section id="v1"><div id="form"></div></section>
 <section id="v2" hidden><div class="card"><h2>একাধিক ভিন্ন ডিজাইনের টেমপ্লেট</h2><div class="g" id="gal"></div></div></section>
-<section id="v3" hidden><div class="card"><h2>সিভিতে যা যা যুক্ত হয়েছে</h2><div class="chips" id="chk"></div></div><div class="card" id="atsCard"><h2>ATS-ফ্রেন্ডলি চেক</h2><p class="atsnote">আপনার সিভি সাধারণ স্ক্রিনিং নিয়মে কেমন দাঁড়ায় তা দেখুন। চাকরির বিবরণ দিলে শব্দের মিলও দেখাবে। এটি একটি সাজেশন, কোনো নিশ্চয়তা নয়।</p><label for="jd">চাকরির বিবরণ (ঐচ্ছিক)</label><textarea id="jd" placeholder="চাকরির বিজ্ঞপ্তি বা জব ডেসক্রিপশন এখানে পেস্ট করুন"></textarea><button class="btn" id="atsBtn" type="button">সিভি চেক করুন</button><div id="atsOut"></div></div>
+<section id="v3" hidden><div class="card"><h2>ডাউনলোড ও প্রিভিউ</h2><div id="pvw"><div id="pv"></div></div>
+<div class="fmts" id="fmts" role="group" aria-label="ফরম্যাট বাছুন"><button class="fm on" data-f="pdf">PDF<small>প্রিন্ট ও আবেদন</small></button><button class="fm" data-f="doc">Word<small>এডিট করতে (.doc)</small></button><button class="fm" data-f="png">PNG<small>ছবি, স্বচ্ছ</small></button><button class="fm" data-f="jpg">JPG<small>ছবি, হালকা</small></button></div>
+<button class="btn" id="dl">PDF ডাউনলোড করুন (A4)</button><button class="sm" id="pr" style="width:100%">বিকল্প: প্রিন্ট করে PDF সেভ করুন (সেরা মান)</button>
+<p style="font-size:13px;color:var(--mute);margin:6px 0 0">পছন্দমতো ফরম্যাট বেছে নিন। PDF প্রিন্ট ও আবেদনের জন্য, Word পরে এডিট করার জন্য, আর PNG বা JPG ছবি হিসেবে শেয়ারের জন্য।</p></div>
+<div class="card" id="atsCard"><h2>ATS-ফ্রেন্ডলি চেক</h2><p class="atsnote">আপনার সিভি সাধারণ স্ক্রিনিং নিয়মে কেমন দাঁড়ায় তা দেখুন। চাকরির বিবরণ দিলে শব্দের মিলও দেখাবে। এটি একটি সাজেশন, কোনো নিশ্চয়তা নয়।</p><label for="jd">চাকরির বিবরণ (ঐচ্ছিক)</label><textarea id="jd" placeholder="চাকরির বিজ্ঞপ্তি বা জব ডেসক্রিপশন এখানে পেস্ট করুন"></textarea><button class="btn" id="atsBtn" type="button">সিভি চেক করুন</button><div id="atsOut"></div></div>
 <div class="card" id="clCard"><h2>কভার লেটার</h2><p class="atsnote">উপরের চাকরির বিবরণ ও আপনার সিভির তথ্য দিয়ে একটি খসড়া তৈরি হয়। খসড়াটি পড়ে নিজের মতো করে সম্পাদনা করুন। এটি একটি শুরু, চূড়ান্ত চিঠি নয়।</p>
 <div class="fl"><div class="f"><label for="clCo">কোম্পানির নাম (ঐচ্ছিক)</label><input id="clCo" placeholder="যেমন ABC Trading Ltd."></div><div class="f"><label for="clTone">ধরন</label><select id="clTone"><option value="formal">আনুষ্ঠানিক</option><option value="friendly">বন্ধুত্বপূর্ণ</option></select></div><div class="f"><label for="clLang">ভাষা</label><select id="clLang"><option value="en">English</option><option value="bn">বাংলা</option></select></div></div>
 <button class="btn" id="clBtn" type="button">কভার লেটার বানান</button>
 <textarea id="clOut" style="min-height:280px;margin-top:14px" placeholder="খসড়া এখানে আসবে। এটি সম্পাদনা করা যায়।"></textarea>
 <div class="fmts" style="grid-template-columns:1fr 1fr"><button class="sm" id="clCopy" type="button">কপি করুন</button><button class="sm" id="clDl" type="button">টেক্সট ফাইল ডাউনলোড</button></div>
 <p class="ats-disc">কোনো AI বা বাইরের সার্ভার ব্যবহার হয় না। খসড়া আপনার ব্রাউজারেই তৈরি হয়। তথ্য ভুল বা অসম্পূর্ণ থাকলে নিজে ঠিক করে নিন। ইংরেজি খসড়ার জন্য বুলেট পয়েন্টগুলো ইংরেজিতে লিখলে ভালো হয়।</p></div>
-<div class="card"><h2>প্রিভিউ</h2><div id="pvw"><div id="pv"></div></div>
-<div class="fmts" id="fmts" role="group" aria-label="ফরম্যাট বাছুন"><button class="fm on" data-f="pdf">PDF<small>প্রিন্ট ও আবেদন</small></button><button class="fm" data-f="doc">Word<small>এডিট করতে (.doc)</small></button><button class="fm" data-f="png">PNG<small>ছবি, স্বচ্ছ</small></button><button class="fm" data-f="jpg">JPG<small>ছবি, হালকা</small></button></div>
-<button class="btn" id="dl">PDF ডাউনলোড করুন (A4)</button><button class="sm" id="pr" style="width:100%">বিকল্প: প্রিন্ট করে PDF সেভ করুন (সেরা মান)</button>
-<p style="font-size:13px;color:var(--mute);margin:6px 0 0">পছন্দমতো ফরম্যাট বেছে নিন। PDF প্রিন্ট ও আবেদনের জন্য, Word পরে এডিট করার জন্য, আর PNG বা JPG ছবি হিসেবে শেয়ারের জন্য।</p></div>
-<div id="pro"></div></section>
+<div class="card"><h2>সিভিতে যা যা যুক্ত হয়েছে</h2><div class="chips" id="chk"></div></div><div id="pro"></div></section>
 <footer class="cvfoot">
 <div><h4>সিভি বানাও</h4><p style="margin:0;line-height:1.7">বাংলাদেশি চাকরিপ্রার্থীদের জন্য সম্পূর্ণ ফ্রি সিভি বানানোর টুল। স্ট্যান্ডার্ড ফরম্যাট, একাধিক টেমপ্লেট, A4 PDF।</p></div>
 <div><h4>মেনু</h4><a href="index.html">হোম</a><a href="cv.html">সিভি বানান</a><a href="guides.html">গাইড</a><a href="about.html">আমাদের সম্পর্কে</a><a href="faq.html">প্রশ্নোত্তর</a><a href="contact.html">যোগাযোগ</a></div>
@@ -258,7 +309,9 @@ CVCSS+='.cv.cdark .hd{background:var(--a);color:#fff;margin:0;padding:26px 28px}
 CVCSS+='.cv.ribbon .hd{background:linear-gradient(90deg,var(--a),var(--t));color:#fff;margin:0;padding:26px 28px}.cv.ribbon h1,.cv.ribbon .po,.cv.ribbon .ct{color:#fff}.cv.ribbon .hd img{border:3px solid #fff}.cv.ribbon h2{color:var(--a);border-left:5px solid var(--a);padding-left:8px;border-bottom:0;font-size:14px}';
 CVCSS+='.cv img.sig{width:auto;height:54px;max-width:200px;object-fit:contain;border:0;margin:0 0 -8px;display:inline-block;vertical-align:bottom}';
 $("cvcss").textContent=CVCSS;
-function sec(t,b,c){return b?'<section class="s '+(c||"")+'"><h2>'+t+'</h2><div class="b">'+b+"</div></section>":""}
+var PF=null,COL=null,CANON=["Contact","Career Objective","Education","Experience","Certifications","Skills","Personal Details","Languages","Interests","References","Declaration"];
+function sec(t,b,c){if(!b)return"";if(COL)COL.push(t);if(PF&&PF.indexOf(t)<0)return"";return '<section class="s '+(c||"")+'"><h2>'+t+'</h2><div class="b">'+b+"</div></section>"}
+function decGate(){if(COL)COL.push("Declaration");return !PF||PF.indexOf("Declaration")>-1}
 function cv(ti){var d=D;ti=ti==null?(D.t||0):ti;var t=TP[ti],K=t[4],tb=/classic|split|cline|cboxed|cdark|ribbon/.test(t[1]);
  var edu=eduList(),exp=d.exp.filter(function(e){return e.pos||e.co});
  var pd=[["Father's Name",d.father],["Mother's Name",d.mother],["Date of Birth",d.dob],["NID No.",d.nid],["Nationality",d.nat],["Religion",d.rel],["Marital Status",d.mar],["Gender",d.gender],["Blood Group",d.blood],["Permanent Address",d.perm]].filter(function(r){return r[1]}).concat(d.cust.filter(function(c){return c.k&&c.v}).map(function(c){return[c.k,c.v]}));
@@ -271,7 +324,7 @@ function cv(ti){var d=D;ti=ti==null?(D.t||0):ti;var t=TP[ti],K=t[4],tb=/classic|
   trn:sec("Certifications",certHTML()),sk:sec("Skills",ul(d.skills)),
   pd:sec("Personal Details",pd.length&&pd.map(function(r){return'<div class="kv"><small>'+esc(r[0])+"</small><span>"+esc(r[1])+"</span></div>"}).join("")),
   lg:sec("Languages",langHTML()),hb:sec("Interests",ul(d.hob)),rf:sec("References",d.refs&&nl(d.refs),"full"),
-  dc:'<div class="dec"><b>Declaration:</b> I do hereby declare that all the information stated above is true and correct to the best of my knowledge.</div><div class="sg"><span>Date: __________</span><span>Signature: '+sigHTML()+'</span></div>'};
+  dc:decGate()?'<div class="dec"><b>Declaration:</b> I do hereby declare that all the information stated above is true and correct to the best of my knowledge.</div><div class="sg"><span>Date: __________</span><span>Signature: '+sigHTML()+'</span></div>':""};
  var o,hd='<header class="hd">'+nmc+img+"</header>";
  if(K==="lin")o=hd+'<div class="bd">'+B.obj+B.edu+B.exp+B.trn+B.sk+B.pd+B.lg+B.hb+B.rf+B.dc+"</div>";
  else if(K==="sl")o='<div class="cols"><aside>'+img+B.ct+B.sk+B.lg+B.hb+B.pd+B.trn+'</aside><div class="mn"><header class="hd">'+nm+"</header>"+B.obj+B.edu+B.exp+B.rf+B.dc+"</div></div>";
@@ -299,7 +352,22 @@ function validateInfo(){
  if(!ok){if(first){first.focus();first.scrollIntoView({behavior:"smooth",block:"center"})}}
  return ok;
 }
-function prev(){$("pv").innerHTML=cv();fit()}
+var PH=1123,PM=24;
+function runHd(){return '<div class="runhd"><b>'+esc(D.name||"")+'</b><span>'+esc(D.post||"")+'</span></div>'}
+function pageWrap(h,idx){return '<div class="pgbox'+(idx?" p2":"")+'">'+(idx?runHd():"")+(idx?h.replace('class="cv ','class="cv nohdr '):h)+"</div>"}
+function pagesFor(ti){
+ COL=[];PF=null;cv(ti);var names=COL.filter(function(x,i,a){return a.indexOf(x)===i});COL=null;
+ names.sort(function(a,b){return CANON.indexOf(a)-CANON.indexOf(b)});
+ if(!names.length)return[pageWrap(cv(ti),0)];
+ var m=document.createElement("div");m.style.cssText="position:absolute;left:-10000px;top:0;width:794px";document.body.appendChild(m);
+ function fits(list,idx){PF=list;var h=cv(ti);PF=null;m.className="pgbox measure"+(idx?" p2":"");m.innerHTML=(idx?runHd():"")+(idx?h.replace('class="cv ','class="cv nohdr '):h);var c=m.querySelector(".cv");return c.offsetHeight<=PH-PM}
+ var groups=[],cur2=[];
+ names.forEach(function(n){var test=cur2.concat([n]);if(!cur2.length||fits(test,groups.length))cur2=test;else{groups.push(cur2);cur2=[n]}});
+ if(cur2.length)groups.push(cur2);
+ m.remove();
+ return groups.map(function(g,i){PF=g;var h=cv(ti);PF=null;return pageWrap(h,i)});
+}
+function prev(){if(cur!==5)return;$("pv").innerHTML=pagesFor(D.t||0).join("");fit()}
 window.addEventListener("resize",fit);
 var G=[["ব্যক্তিগত তথ্য"],["name","পুরো নাম (ইংরেজিতে)"],["post","কোন পদের জন্য আবেদন"],["phone","মোবাইল নম্বর",0,1],["email","ইমেইল",0,1],["addr","বর্তমান ঠিকানা"],["#ph"],
 ["ক্যারিয়ার অবজেক্টিভ"],["obj","২-৩ লাইনে লিখুন",1],["#edu"],["#exp"],
@@ -395,7 +463,7 @@ renderEdu();
 renderExp();renderCert();renderLang();renderCust();renderSig();
 $("ph").onchange=function(){var fl=this.files[0];if(!fl)return;var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement("canvas"),s=Math.min(1,300/Math.max(im.width,im.height));c.width=im.width*s;c.height=im.height*s;c.getContext("2d").drawImage(im,0,0,c.width,c.height);D.photo=c.toDataURL("image/jpeg",.85);save();prev()};im.src=fr.result};fr.readAsDataURL(fl)};
 function lib(u){return new Promise(function(ok,no){var e=document.createElement("script");e.src=u;e.onload=ok;e.onerror=no;document.head.appendChild(e)})}
-async function mkpdf(){
+async function mkpdfOld(){
  if(!window.html2canvas)await lib("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js");
  if(!window.jspdf)await lib("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");
  if(document.fonts&&document.fonts.ready)await document.fonts.ready;
@@ -416,20 +484,22 @@ async function mkpdf(){
    y0=end;pn++}
   return pdf.output("blob")
  }finally{box.remove()}}
-$("dl").onclick=async function(){if(!validateInfo()){step(0);return}var b=$("dl"),t=b.textContent,fn="CV-"+(D.name||"my").replace(/[^\w]+/g,"-")+"."+EXT[FMT];
+$("dl").onclick=async function(){if(!validateInfo()){step(0);return}var b=$("dl"),t=b.textContent,base="CV-"+(D.name||"my").replace(/[^\w]+/g,"-");
  b.disabled=true;b.textContent="ফাইল তৈরি হচ্ছে…";
- try{var blob=await makeFile(FMT),dl=null;
-  try{if(typeof claude!=="undefined")dl=await claude.use("downloads")}catch(e){}
-  if(dl){try{await dl.save({filename:fn,data:blob})}catch(e){if(!e||e.code!=="declined")alert("এই ভিউতে ডাউনলোড করা যাচ্ছে না")}}
-  else{var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fn;document.body.appendChild(a);a.click();a.remove()}
+ try{var res=await makeFile(FMT),items=Array.isArray(res)?res.map(function(x,i){return{b:x,n:base+"-"+(i+1)+"."+EXT[FMT]}}):[{b:res,n:base+"."+EXT[FMT]}];
+  for(var k=0;k<items.length;k++){var it=items[k],dl=null;
+   try{if(typeof claude!=="undefined")dl=await claude.use("downloads")}catch(e){}
+   if(dl){try{await dl.save({filename:it.n,data:it.b})}catch(e){if(!e||e.code!=="declined")alert("এই ভিউতে ডাউনলোড করা যাচ্ছে না")}}
+   else{var a=document.createElement("a");a.href=URL.createObjectURL(it.b);a.download=it.n;document.body.appendChild(a);a.click();a.remove();await new Promise(function(r){setTimeout(r,400)})}
+  }
  }catch(e){alert("ফাইল তৈরি করা যায়নি। ইন্টারনেট সংযোগ দেখে আবার চেষ্টা করুন।")}
  b.disabled=false;b.textContent=t};
 var FMT="pdf",EXT={pdf:"pdf",doc:"doc",png:"png",jpg:"jpg"},LBL={pdf:"PDF ডাউনলোড করুন (A4)",doc:"Word ফাইল ডাউনলোড করুন (.doc)",png:"PNG ছবি ডাউনলোড করুন",jpg:"JPG ছবি ডাউনলোড করুন"};
 function setFmt(f){FMT=f;document.querySelectorAll(".fm").forEach(function(x){x.classList.toggle("on",x.dataset.f===f)});$("dl").textContent=LBL[f]}
 document.querySelectorAll(".fm").forEach(function(x){x.onclick=function(){setFmt(x.dataset.f)}});
 async function makeFile(f){if(f==="pdf")return mkpdf();if(f==="doc")return mkdoc();return mkimg(f==="png"?"image/png":"image/jpeg")}
-function mkdoc(){var h='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><style>@page{size:A4;margin:12mm}body{margin:0}'+CVCSS+'</style></head><body>'+cv()+'</body></html>';return new Blob(["\ufeff",h],{type:"application/msword"})}
-async function mkimg(type){
+function mkdocOld(){var h='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><style>@page{size:A4;margin:12mm}body{margin:0}'+CVCSS+'</style></head><body>'+cv()+'</body></html>';return new Blob(["\ufeff",h],{type:"application/msword"})}
+async function mkimgOld(type){
  if(!window.html2canvas)await lib("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js");
  if(document.fonts&&document.fonts.ready)await document.fonts.ready;
  var box=document.createElement("div");box.style.cssText="position:absolute;left:-10000px;top:0;width:794px;background:#fff";box.innerHTML=cv();document.body.appendChild(box);
@@ -598,9 +668,57 @@ function renderSig(){
  };
  row.appendChild(inp);c.appendChild(row);
 }
+var H2C_URL="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js",JSPDF_URL="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+async function loadLibs(){if(!window.html2canvas)await lib(H2C_URL);if(!window.jspdf)await lib(JSPDF_URL);if(document.fonts&&document.fonts.ready)await document.fonts.ready}
+function pageBox(h){var b=document.createElement("div");b.style.cssText="position:absolute;left:-10000px;top:0;width:794px;background:#fff";b.innerHTML=h;document.body.appendChild(b);return b}
+async function mkpdf(){
+ await loadLibs();
+ var pages=pagesFor(D.t||0),pdf=new window.jspdf.jsPDF({unit:"mm",format:"a4"});
+ for(var i=0;i<pages.length;i++){
+  var b=pageBox(pages[i]);
+  try{var c=await html2canvas(b.firstElementChild,{scale:2,backgroundColor:"#fff",useCORS:true,windowWidth:794,width:794,height:1123});
+   if(i)pdf.addPage();
+   pdf.addImage(c.toDataURL("image/jpeg",.92),"JPEG",0,0,210,297)}
+  finally{b.remove()}
+ }
+ return pdf.output("blob");
+}
+async function mkimg(type){
+ await loadLibs();
+ var pages=pagesFor(D.t||0),out=[];
+ for(var i=0;i<pages.length;i++){
+  var b=pageBox(pages[i]);
+  try{var c=await html2canvas(b.firstElementChild,{scale:2,backgroundColor:"#fff",useCORS:true,windowWidth:794,width:794,height:1123});
+   out.push(await new Promise(function(ok,no){c.toBlob(function(x){x?ok(x):no(new Error("img"))},type,.92)}))}
+  finally{b.remove()}
+ }
+ return out;
+}
+var INL=["color","background-color","background-image","font-family","font-size","font-weight","font-style","line-height","text-align","text-transform","letter-spacing","border-top","border-bottom","border-left","border-right","border-radius","padding-top","padding-right","padding-bottom","padding-left","margin-top","margin-right","margin-bottom","margin-left","width","display","vertical-align"];
+function inlineStyles(src,dst){
+ var cs=getComputedStyle(src),st=[];
+ INL.forEach(function(p){var v=cs.getPropertyValue(p);if(!v)return;if(p==="display"){if(/flex|grid/.test(v))v="block";else if(v==="inline-flex")v="inline-block"}st.push(p+":"+v)});
+ if(dst.setAttribute)dst.setAttribute("style",st.join(";"));
+ for(var i=0;i<src.children.length&&i<dst.children.length;i++)inlineStyles(src.children[i],dst.children[i]);
+}
+function mkdoc(){
+ var pages=pagesFor(D.t||0),html="";
+ pages.forEach(function(p){var b=pageBox(p);try{inlineStyles(b.firstElementChild,b.firstElementChild);html+='<div style="page-break-after:always">'+b.innerHTML+"</div>"}finally{b.remove()}});
+ var h='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><style>@page{size:A4;margin:12mm}body{margin:0;font-family:Arial,sans-serif}</style></head><body>'+html+"</body></html>";
+ return new Blob(["\ufeff",h],{type:"application/msword"});
+}
+function placeNav(){
+ document.querySelectorAll(".navrow").forEach(function(n){n.remove()});
+ var host;if(cur<=3){var vis=cards.filter(function(c){return !c.hidden});host=vis[vis.length-1]}else host=cur===4?$("v2"):$("v3");
+ if(!host)return;
+ var r=document.createElement("div");r.className="navrow";
+ var bk2=document.createElement("button");bk2.type="button";bk2.className="nvb ghost";bk2.textContent="← আগের ধাপ";bk2.style.visibility=cur?"visible":"hidden";bk2.onclick=function(){step(cur-1)};r.appendChild(bk2);
+ if(cur<5){var nx2=document.createElement("button");nx2.type="button";nx2.className="nvb nxt";nx2.textContent="পরের ধাপ →";nx2.onclick=function(){if(cur===0&&!validateInfo())return;step(cur+1)};r.appendChild(nx2)}
+ host.appendChild(r);
+}
 function pro(){D.pro=true;$("pro").innerHTML=""}
 function gal(){var g=$("gal");g.innerHTML="";TP.forEach(function(t,i){var b=document.createElement("button");b.className="gi"+(D.t===i?" on":"");b.innerHTML='<div class="th">'+cv(i)+"</div><span>"+t[0]+"</span>";b.onclick=function(){D.t=i;save();prev();gal()};g.appendChild(b)})}
-$("pr").onclick=function(){if(!validateInfo()){step(0);return}var fr=document.createElement("iframe");fr.style.cssText="position:fixed;right:0;bottom:0;width:0;height:0;border:0";document.body.appendChild(fr);var d=fr.contentWindow.document;d.open();d.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>CV</title><style>@page{size:A4;margin:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{margin:0}.it,.kv,tr{break-inside:avoid}'+CVCSS+'</style></head><body>'+cv()+"</body></html>");d.close();setTimeout(function(){try{fr.contentWindow.focus();fr.contentWindow.print()}catch(e){alert("এই ভিউতে প্রিন্ট করা যাচ্ছে না")}setTimeout(function(){fr.remove()},60000)},500)};
+$("pr").onclick=function(){if(!validateInfo()){step(0);return}var fr=document.createElement("iframe");fr.style.cssText="position:fixed;right:0;bottom:0;width:0;height:0;border:0";document.body.appendChild(fr);var d=fr.contentWindow.document;d.open();d.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>CV</title><style>@page{size:A4;margin:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{margin:0}.it,.kv,tr{break-inside:avoid}.pgbox{margin:0!important;box-shadow:none!important;page-break-after:always}.pgbox:last-child{page-break-after:auto}'+CVCSS+'</style></head><body>'+pagesFor(D.t||0).join("")+"</body></html>");d.close();setTimeout(function(){try{fr.contentWindow.focus();fr.contentWindow.print()}catch(e){alert("এই ভিউতে প্রিন্ট করা যাচ্ছে না")}setTimeout(function(){fr.remove()},60000)},500)};
 function chk(){var ex=D.exp.some(function(e){return e.pos||e.co}),L=[["নাম",D.name],["পদ",D.post],["মোবাইল",D.phone],["ইমেইল",D.email],["ঠিকানা",D.addr],["ছবি",D.photo],["অবজেক্টিভ",D.obj],["শিক্ষা",eduList().length],["অভিজ্ঞতা",ex],["সার্টিফিকেশন",D.cert.length],["ভাষা",D.lang.length],["দক্ষতা",D.skills],["শখ",D.hob],["ব্যক্তিগত বিবরণ",D.father||D.mother||D.nid||D.dob],["কাস্টম",D.cust.length],["রেফারেন্স",D.refs]];$("chk").innerHTML=L.map(function(x){return'<span class="chip'+(x[1]?" ok":"")+'">'+(x[1]?"✓ ":"○ ")+x[0]+"</span>"}).join("")}
 var ST=[["পরিচয়","ব্যক্তিগত তথ্য","নাম, যোগাযোগ, ছবি ও ক্যারিয়ার লক্ষ্য লিখুন"],["শিক্ষা","শিক্ষাগত যোগ্যতা","এসএসসি থেকে সর্বোচ্চ ডিগ্রি পর্যন্ত যোগ করুন"],["অভিজ্ঞতা","অভিজ্ঞতা ও দক্ষতা","অভিজ্ঞতা, সার্টিফিকেশন, দক্ষতা ও ভাষা"],["বিবরণ","ব্যক্তিগত বিবরণ","পিতা-মাতার নাম, NID ও রেফারেন্স"],["টেমপ্লেট","টেমপ্লেট বাছুন","একাধিক ডিজাইন থেকে পছন্দের একটি বেছে নিন"],["ডাউনলোড","প্রিভিউ ও PDF","সব তথ্য ঠিক আছে কিনা দেখে PDF নামান"]],MAP=[0,0,1,2,2,2,2,3,3,3,3],cur=0,cards=[].slice.call($("form").children);
 function bd(n){return n.toLocaleString("bn-BD")}
@@ -608,7 +726,7 @@ function step(n){cur=Math.max(0,Math.min(5,n));cards.forEach(function(c,i){c.hid
  $("stp").innerHTML=ST.map(function(x,i){return'<button class="sd'+(i<cur?" done":i===cur?" on":"")+'" data-i="'+i+'"><i>'+(i<cur?"✓":bd(i+1))+"</i><span>"+x[0]+"</span></button>"}).join("");
  $("sh").innerHTML='<div class="sh"><small>ধাপ '+bd(cur+1)+" / "+bd(6)+"</small><h2>"+ST[cur][1]+"</h2><p>"+ST[cur][2]+"</p></div>";
  $("bk").style.visibility=cur?"visible":"hidden";$("nx").style.display=cur===5?"none":"";
- if(cur===4)gal();if(cur===5){prev();chk()}window.scrollTo(0,0)}
+ if(cur===4)gal();if(cur===5){prev();chk()}placeNav();window.scrollTo(0,0)}
 $("stp").onclick=function(e){var t=e.target.closest(".sd");if(t)step(+t.dataset.i)};
 $("bk").onclick=function(){step(cur-1)};$("nx").onclick=function(){if(cur===0&&!validateInfo())return;step(cur+1)};
 pro();prev();step(0);
