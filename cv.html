@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ফ্রি সিভি মেকার বাংলাদেশ · সিভি বানাও (CV Maker)</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--d0:#021710;--d1:#05261c;--d2:#0b4d3a;--g1:#0b6b4f;--g2:#14a37a;--gold:#f5c542;--gold2:#ffdf7e;--ink:#0b1f19;--mute:#5d6f67;--bg:#f4f8f6;--line:#e1ebe6;--card:#fff;--sh:0 1px 2px rgba(11,31,25,.05),0 14px 36px rgba(5,38,28,.08);--sh2:0 26px 60px rgba(5,38,28,.16);box-sizing:border-box}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:150px}
+body{margin:0;background:radial-gradient(1100px 500px at 100% -10%,#dcefe6 0%,transparent 60%),radial-gradient(800px 420px at -10% 20%,#e9f5ef 0%,transparent 60%),var(--bg);color:var(--ink);font:400 16px/1.65 "Hind Siliguri",system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+button{font:inherit;cursor:pointer}
+input,select,textarea{font:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
+
+/* header */
+.hdw{position:sticky;top:0;z-index:30;background:radial-gradient(700px 300px at 90% -40%,rgba(20,163,122,.55),transparent 60%),linear-gradient(160deg,var(--d0),var(--d1) 60%,var(--d2));color:#fff;box-shadow:0 10px 30px rgba(2,23,16,.25);padding-top:env(safe-area-inset-top,0px)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:900px;margin:0 auto;padding:14px 20px 8px}
+.bl{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;min-width:0}
+.bl svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 6px 14px rgba(0,0,0,.3))}
+.bl b{display:block;font-size:18px;line-height:1.15;letter-spacing:.2px}
+.bl small{display:block;color:#a9d6c4;font-size:12.5px;margin-top:2px}
+.hn{display:flex;gap:2px;align-items:center;flex:none}
+.hn a{text-decoration:none;color:#cde9dd;font-size:14.5px;font-weight:500;padding:8px 12px;border-radius:12px;white-space:nowrap;transition:background .2s,color .2s}
+.hn a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hn a:first-child{background:rgba(255,255,255,.12);color:#fff}
+.stp{display:flex;max-width:900px;margin:0 auto;padding:6px 14px 16px;overflow-x:auto;scrollbar-width:none}
+.stp::-webkit-scrollbar{display:none}
+.sd{flex:1;min-width:64px;position:relative;border:0;background:none;padding:6px 0 0;display:flex;flex-direction:column;align-items:center;gap:6px;color:#8fbfa9;font:500 12px "Hind Siliguri",sans-serif;white-space:nowrap}
+.sd i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.22);font-style:normal;font-weight:700;font-size:14px;position:relative;z-index:1;transition:.3s}
+.sd::before{content:"";position:absolute;top:23px;right:50%;width:100%;height:2px;background:rgba(255,255,255,.14)}
+.sd:first-child::before{display:none}
+.sd.done i{background:linear-gradient(135deg,var(--gold),var(--gold2));border-color:transparent;color:#2b2100}
+.sd.done::before,.sd.on::before{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.sd.on{color:#fff;font-weight:700}
+.sd.on i{background:#fff;border-color:#fff;color:var(--g1);box-shadow:0 0 0 5px rgba(255,255,255,.16),0 8px 20px rgba(0,0,0,.25)}
+
+/* content */
+main{max-width:900px;margin:0 auto;padding:0 18px 150px}
+.sh{padding:26px 4px 4px}
+.sh small{display:inline-block;color:var(--g1);font-weight:700;font-size:12.5px;letter-spacing:.6px;text-transform:uppercase;background:rgba(11,107,79,.08);padding:5px 12px;border-radius:30px}
+.sh h2{margin:12px 0 4px;font-size:30px;line-height:1.25;font-weight:700;letter-spacing:-.2px}
+.sh p{margin:0;color:var(--mute);font-size:15.5px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px 20px;margin-top:16px;box-shadow:var(--sh);animation:cin .35s ease both}
+@keyframes cin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card h2{position:relative;font-size:17px;margin:0 0 14px;padding:0 0 12px 14px;border-bottom:1px solid var(--line);font-weight:700}
+.card h2::before{content:"";position:absolute;left:0;top:3px;width:4px;height:17px;border-radius:4px;background:linear-gradient(var(--g2),var(--g1))}
+label{display:block;font-size:13.5px;font-weight:600;color:#2a3d36;margin:12px 0 6px}
+input,textarea,select{width:100%;padding:12px 14px;border:1.5px solid #d6e2dc;border-radius:14px;background:#fbfdfc;color:var(--ink);transition:border-color .2s,box-shadow .2s,background .2s;appearance:none;-webkit-appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:calc(100% - 18px) 55%,calc(100% - 13px) 55%;background-size:5px 5px;background-repeat:no-repeat;padding-right:36px}
+input:focus,textarea:focus,select:focus{outline:0;border-color:var(--g2);background:#fff;box-shadow:0 0 0 4px rgba(20,163,122,.14)}
+textarea{min-height:88px;resize:vertical}
+input[type=checkbox]{width:18px;height:18px;padding:0;accent-color:var(--g1)}
+input[type=file]{padding:10px;font-size:14px;background:#fff}
+.fl{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.f{grid-column:span 1;min-width:0}
+.f.full{grid-column:1/-1}
+@media (max-width:520px){.fl{grid-template-columns:1fr}.f{grid-column:1/-1}}
+.row{position:relative;border:1px solid var(--line);background:linear-gradient(180deg,#fbfdfc,#f5faf8);border-radius:18px;padding:14px 14px 12px;margin-top:14px}
+.err{display:block;color:#b42318;font-size:12.5px;font-weight:500;margin-top:6px;min-height:0}
+input.bad,textarea.bad,select.bad{border-color:#e5484d!important;background:#fff8f7!important;box-shadow:0 0 0 4px rgba(229,72,77,.1)!important}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border:0;border-radius:16px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;font-weight:700;font-size:16px;margin-top:16px;box-shadow:0 12px 26px rgba(11,107,79,.3);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(11,107,79,.36)}
+.btn:disabled{opacity:.6;transform:none}
+#dl{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#2b2100;box-shadow:0 12px 26px rgba(245,197,66,.36)}
+#dl:hover{box-shadow:0 16px 34px rgba(245,197,66,.46)}
+.sm{padding:10px 16px;border-radius:12px;border:1.5px solid #d6e2dc;background:#fff;color:var(--ink);margin-top:10px;font-weight:600;font-size:14px;transition:.2s}
+.sm:hover{border-color:var(--g2);color:var(--g1)}
+.row .sm:last-child{color:#b42318;border-color:#f3c9c6}
+.row .sm:last-child:hover{background:#fff5f4}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{font-size:13px;padding:6px 13px;border-radius:30px;border:1px solid var(--line);color:var(--mute);background:#fff;font-weight:500}
+.chip.ok{background:#e8f6ef;border-color:#bfe5d2;color:var(--g1)}
+
+/* templates gallery */
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;justify-content:center}
+.gi{position:relative;border:2px solid var(--line);border-radius:18px;background:#fff;padding:0;overflow:hidden;box-shadow:var(--sh);transition:transform .25s,box-shadow .25s,border-color .25s;text-align:left}
+.gi:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
+.gi.on{border-color:var(--gold);box-shadow:0 0 0 4px rgba(245,197,66,.28),var(--sh2)}
+.gi.on::after{content:"✓";position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#2b2100;display:grid;place-items:center;font-weight:700;font-size:14px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.th{width:100%;aspect-ratio:146/206;overflow:hidden;position:relative;pointer-events:none;background:#f7faf9}
+.th .cv{width:600px;min-width:0;transform:scale(.243);transform-origin:0 0;position:absolute;left:0;top:0}
+.gi span{display:block;font-size:13.5px;font-weight:600;padding:9px 6px;border-top:1px solid var(--line);text-align:center}
+
+/* preview */
+#pvw{overflow:hidden;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,#eef4f1,#e6eeea);padding:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+#pv{margin:0 auto}
+#pv .cv{box-shadow:0 18px 40px rgba(5,38,28,.18);border-radius:4px;background:#fff}
+#chk .chip{font-size:12.5px}
+
+/* footer bar */
+.foot{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:12px;justify-content:center;align-items:center;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.86);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);border-top:1px solid rgba(11,31,25,.07);box-shadow:0 -14px 34px rgba(5,38,28,.08)}
+.foot button{flex:1;max-width:340px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:15.5px;transition:transform .2s,box-shadow .2s}
+.foot button:hover{transform:translateY(-2px)}
+.foot .ghost{background:#fff;border:1.5px solid #d6e2dc;color:var(--ink)}
+.foot .nx{border:0;color:#fff;background:linear-gradient(135deg,var(--g1),var(--g2));box-shadow:0 10px 24px rgba(11,107,79,.3)}
+.foot button:disabled{opacity:.5}
+
+/* footer */
+.cvfoot{position:relative;overflow:hidden;margin-top:48px;border-radius:26px;background:linear-gradient(170deg,var(--d1),var(--d0));color:#a9cdbf;padding:34px 28px 22px;display:grid;grid-template-columns:1.3fr 1fr 1.2fr;gap:26px;font-size:14.5px}
+.cvfoot::before{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(20,163,122,.2),transparent 65%);right:-100px;top:-120px;pointer-events:none}
+.cvfoot>*{position:relative}
+.cvfoot h4{margin:0 0 12px;font-size:12.5px;color:#fff;letter-spacing:.8px;text-transform:uppercase}
+.cvfoot p{margin:0;line-height:1.7;color:#9cc2b3}
+.cvfoot a{display:block;color:#b7d9ca;text-decoration:none;padding:4px 0;transition:color .2s}
+.cvfoot a:hover{color:var(--gold)}
+.cvfoot .fbot{grid-column:1/-1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px;font-size:13.5px;color:#7fa998}
+.cvfoot .fbot b{color:#fff;letter-spacing:.4px}
+@media (max-width:640px){
+ .hn a:not(:first-child){display:none}
+ .bl small{display:none}
+ .sh h2{font-size:25px}
+ .card{padding:18px 16px;border-radius:20px}
+ .sd{min-width:56px}
+ .sd span{font-size:11px}
+ main{padding-bottom:140px}
+ .cvfoot{grid-template-columns:1fr;padding:28px 22px 20px}
+ .foot{gap:10px;padding-left:12px;padding-right:12px}
+ .foot button{padding:13px 12px;font-size:15px}
+}
+@media (max-width:420px){.sd span{display:none}.sd i{width:30px;height:30px}.sd::before{top:19px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.fmts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.fm{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px 12px;border:1.5px solid #d6e2dc;border-radius:16px;background:#fff;color:var(--ink);text-align:left;font-weight:700;font-size:15px;transition:.2s}
+.fm small{font-size:11.5px;font-weight:500;color:var(--mute);line-height:1.35}
+.fm:hover{border-color:var(--g2)}
+.fm.on{border-color:var(--gold);background:linear-gradient(180deg,#fffbeb,#fff);box-shadow:0 0 0 4px rgba(245,197,66,.22)}
+@media (max-width:520px){.fmts{grid-template-columns:1fr 1fr}}
+
+@media (max-width:640px){
+ input,select,textarea{font-size:16px;min-height:50px}
+ label{font-size:14px;margin-top:14px}
+ .bar{padding:12px 14px 4px;gap:10px}
+ .bl svg{width:34px;height:34px}
+ .bl b{font-size:16px}
+ .bl small{display:none}
+ .hn a:not(:first-child){display:none}
+ .hn a:first-child{padding:10px 12px;min-height:44px;display:flex;align-items:center}
+ .stp{padding:4px 8px 12px}
+ .sd{min-width:50px}
+ .sd i{width:30px;height:30px;font-size:13px}
+ .sh{padding:18px 4px 0}
+ .sh h2{font-size:23px}
+ .sh p{font-size:14px}
+ main{padding:0 12px 150px}
+ .card{padding:18px 16px;border-radius:20px}
+ .card h2{font-size:16px}
+ .fl{grid-template-columns:1fr}
+ .row{padding:12px 12px 10px}
+ .sm{min-height:44px;padding:10px 14px}
+ .fmts{grid-template-columns:1fr 1fr;gap:8px}
+ .fm{padding:10px;min-height:56px}
+ .fm small{display:none}
+ .g{grid-template-columns:repeat(2,1fr);gap:12px}
+ #pvw{padding:8px;overflow-x:auto}
+ .foot{padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));gap:8px}
+ .foot button{min-height:50px;font-size:15px;padding:12px 10px}
+ .btn{min-height:52px}
+ .chips{gap:6px}
+ .chip{font-size:12px;padding:5px 10px}
+ .cvfoot{margin-top:28px;padding:24px 20px 18px;border-radius:22px}
+}
+@media (max-width:380px){
+ .sd span{display:none}
+ .foot button{font-size:14px}
+}
+.dev{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.35);transition:.2s}.dev:hover{color:var(--gold);border-color:var(--gold)}
+.atsnote{font-size:14px;color:var(--mute);margin:0 0 10px}
+#atsOut{margin-top:16px}
+.ats-top{display:flex;gap:18px;align-items:center;padding:16px;border-radius:18px;background:linear-gradient(135deg,#f3faf6,#fff);border:1px solid var(--line)}
+.ats-ring{width:92px;height:92px;border-radius:50%;flex:none;display:grid;place-items:center;position:relative}
+.ats-ring::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ring,conic-gradient(var(--g1) 0,#e6efea 0));mask:radial-gradient(farthest-side,transparent 64%,#000 66%);-webkit-mask:radial-gradient(farthest-side,transparent 64%,#000 66%)}
+.ats-ring b{font-size:24px;position:relative}
+.ats-ring small{position:absolute;bottom:20px;font-size:10px;color:var(--mute);font-weight:600}
+.ats-msg{font-weight:700;font-size:16px;margin:0 0 4px}
+.ats-msg+p{margin:0;font-size:13.5px;color:var(--mute)}
+.ats-list{list-style:none;margin:14px 0 0;padding:0}
+.ats-list li{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-top:1px solid #eef4f1;font-size:14.5px}
+.ats-list li:first-child{border-top:0}
+.ats-dot{width:24px;height:24px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:13px;font-weight:700;color:#fff;margin-top:1px}
+.ats-dot.ok{background:var(--g2)}.ats-dot.part{background:var(--gold);color:#2b2100}.ats-dot.no{background:#e5484d}
+.ats-tip{display:block;color:var(--mute);font-size:13px;margin-top:2px}
+.ats-kw{margin-top:14px;font-size:14px}
+.ats-kw .chips{margin-top:8px}
+.ats-disc{font-size:12.5px;color:var(--mute);margin:14px 0 0;padding:10px 12px;background:#fbfcfb;border-radius:12px;border:1px dashed #d6e2dc}
+</style>
+<style id="cvcss"></style>
+<link rel="icon" href="favicon.png" type="image/png">
+<meta name="description" content="ফ্রি সিভি মেকার বাংলাদেশ: বাংলাদেশি স্ট্যান্ডার্ড CV format, SSC/HSC/Honours/Masters তথ্য, একাধিক প্রফেশনাল টেমপ্লেট। A4 PDF ডাউনলোড করুন, সম্পূর্ণ ফ্রি।">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://cvbanao.com/cv.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="সিভি বানাও">
+<meta property="og:title" content="ফ্রি সিভি মেকার বাংলাদেশ · সিভি বানাও">
+<meta property="og:description" content="বাংলাদেশি স্ট্যান্ডার্ড CV format, একাধিক টেমপ্লেট, A4 PDF। সম্পূর্ণ ফ্রি।">
+<meta property="og:url" content="https://cvbanao.com/cv.html">
+<meta property="og:image" content="https://cvbanao.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="hdw"><header class="bar"><a class="bl" href="index.html" aria-label="সিভি বানাও হোম"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#0b6b4f"/><path d="M20 12h17l9 9v29a2 2 0 0 1-2 2H20a2 2 0 0 1-2-2V14a2 2 0 0 1 2-2z" fill="#fff"/><rect x="23" y="27" width="16" height="2.5" rx="1.2" fill="#0b6b4f"/><rect x="23" y="33" width="12" height="2.5" rx="1.2" fill="#0b6b4f"/><circle cx="45" cy="45" r="10" fill="#f5b83d" stroke="#0b6b4f" stroke-width="2.5"/><path d="M40 45l3.5 3.5L50 41" stroke="#14231c" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>সিভি বানাও</b><small>বাংলাদেশি স্ট্যান্ডার্ড সিভি, ২ মিনিটে</small></div></a><nav class="hn" aria-label="প্রধান মেনু"><a href="index.html">হোম</a><a href="guides.html">গাইড</a><a href="index.html#faq">প্রশ্নোত্তর</a></nav></header><nav class="stp" id="stp"></nav></div>
+<main>
+<div id="sh"></div>
+
+<section id="v1"><div id="form"></div></section>
+<section id="v2" hidden><div class="card"><h2>একাধিক ভিন্ন ডিজাইনের টেমপ্লেট</h2><div class="g" id="gal"></div></div></section>
+<section id="v3" hidden><div class="card"><h2>সিভিতে যা যা যুক্ত হয়েছে</h2><div class="chips" id="chk"></div></div><div class="card" id="atsCard"><h2>ATS-ফ্রেন্ডলি চেক</h2><p class="atsnote">আপনার সিভি সাধারণ স্ক্রিনিং নিয়মে কেমন দাঁড়ায় তা দেখুন। চাকরির বিবরণ দিলে শব্দের মিলও দেখাবে। এটি একটি সাজেশন, কোনো নিশ্চয়তা নয়।</p><label for="jd">চাকরির বিবরণ (ঐচ্ছিক)</label><textarea id="jd" placeholder="চাকরির বিজ্ঞপ্তি বা জব ডেসক্রিপশন এখানে পেস্ট করুন"></textarea><button class="btn" id="atsBtn" type="button">সিভি চেক করুন</button><div id="atsOut"></div></div>
+<div class="card" id="clCard"><h2>কভার লেটার</h2><p class="atsnote">উপরের চাকরির বিবরণ ও আপনার সিভির তথ্য দিয়ে একটি খসড়া তৈরি হয়। খসড়াটি পড়ে নিজের মতো করে সম্পাদনা করুন। এটি একটি শুরু, চূড়ান্ত চিঠি নয়।</p>
+<div class="fl"><div class="f"><label for="clCo">কোম্পানির নাম (ঐচ্ছিক)</label><input id="clCo" placeholder="যেমন ABC Trading Ltd."></div><div class="f"><label for="clTone">ধরন</label><select id="clTone"><option value="formal">আনুষ্ঠানিক</option><option value="friendly">বন্ধুত্বপূর্ণ</option></select></div><div class="f"><label for="clLang">ভাষা</label><select id="clLang"><option value="en">English</option><option value="bn">বাংলা</option></select></div></div>
+<button class="btn" id="clBtn" type="button">কভার লেটার বানান</button>
+<textarea id="clOut" style="min-height:280px;margin-top:14px" placeholder="খসড়া এখানে আসবে। এটি সম্পাদনা করা যায়।"></textarea>
+<div class="fmts" style="grid-template-columns:1fr 1fr"><button class="sm" id="clCopy" type="button">কপি করুন</button><button class="sm" id="clDl" type="button">টেক্সট ফাইল ডাউনলোড</button></div>
+<p class="ats-disc">কোনো AI বা বাইরের সার্ভার ব্যবহার হয় না। খসড়া আপনার ব্রাউজারেই তৈরি হয়। তথ্য ভুল বা অসম্পূর্ণ থাকলে নিজে ঠিক করে নিন। ইংরেজি খসড়ার জন্য বুলেট পয়েন্টগুলো ইংরেজিতে লিখলে ভালো হয়।</p></div>
+<div class="card"><h2>প্রিভিউ</h2><div id="pvw"><div id="pv"></div></div>
+<div class="fmts" id="fmts" role="group" aria-label="ফরম্যাট বাছুন"><button class="fm on" data-f="pdf">PDF<small>প্রিন্ট ও আবেদন</small></button><button class="fm" data-f="doc">Word<small>এডিট করতে (.doc)</small></button><button class="fm" data-f="png">PNG<small>ছবি, স্বচ্ছ</small></button><button class="fm" data-f="jpg">JPG<small>ছবি, হালকা</small></button></div>
+<button class="btn" id="dl">PDF ডাউনলোড করুন (A4)</button><button class="sm" id="pr" style="width:100%">বিকল্প: প্রিন্ট করে PDF সেভ করুন (সেরা মান)</button>
+<p style="font-size:13px;color:var(--mute);margin:6px 0 0">পছন্দমতো ফরম্যাট বেছে নিন। PDF প্রিন্ট ও আবেদনের জন্য, Word পরে এডিট করার জন্য, আর PNG বা JPG ছবি হিসেবে শেয়ারের জন্য।</p></div>
+<div id="pro"></div></section>
+<footer class="cvfoot">
+<div><h4>সিভি বানাও</h4><p style="margin:0;line-height:1.7">বাংলাদেশি চাকরিপ্রার্থীদের জন্য সম্পূর্ণ ফ্রি সিভি বানানোর টুল। স্ট্যান্ডার্ড ফরম্যাট, একাধিক টেমপ্লেট, A4 PDF।</p></div>
+<div><h4>মেনু</h4><a href="index.html">হোম</a><a href="cv.html">সিভি বানান</a><a href="guides.html">গাইড</a><a href="about.html">আমাদের সম্পর্কে</a><a href="faq.html">প্রশ্নোত্তর</a><a href="contact.html">যোগাযোগ</a></div>
+<div><h4>যোগাযোগ</h4><a href="mailto:cvbuilderbd@gmail.com">cvbuilderbd@gmail.com</a><a href="tel:+8801600169597">01600-169597</a><a href="https://www.facebook.com/cvbuilderbd" target="_blank" rel="noopener">Facebook</a><a href="privacy.html">গোপনীয়তা নীতি</a><a href="terms.html">শর্তাবলী</a></div>
+<div class="fbot"><span>© 2026 সিভি বানাও। সর্বস্বত্ব সংরক্ষিত।</span><span>ওয়েবসাইট বিল্ডার: <a class="dev" href="https://www.facebook.com/mdsofian68" target="_blank" rel="noopener" aria-label="MD ABU SUFIAN ফেসবুক প্রোফাইল"><b>MD ABU SUFIAN</b></a></span></div>
+</footer>
+</main>
+<div class="foot"><button class="ghost" id="bk">← আগের ধাপ</button><button class="nx" id="nx">পরের ধাপ →</button></div>
+
+<script>
+(function(){
+var CONTACT="01XXXXXXXXX",CODES=["CV-4K9P-77XA","CV-M2Q8-15ZD","CV-T6W3-90HB","CV-R8N5-42LC","CV-Y1J7-68VF"];
+var KEY="cv-bd-v1",D={name:"",post:"",phone:"",email:"",addr:"",obj:"",father:"",mother:"",dob:"",nid:"",nat:"Bangladeshi",rel:"Islam",mar:"Single",perm:"",photo:"",skills:"",lang:[{n:"Bangla",l:"Native"},{n:"English",l:"Fluent"}],cert:[],cust:[],train:"",refs:"",
+edu:[{lv:"SSC"},{lv:"HSC"},{lv:"Honours"}],exp:[],gender:"",blood:"",hob:"",sig:"",t:0,pro:false};
+try{var rs=localStorage.getItem(KEY);if(rs)Object.assign(D,JSON.parse(rs))}catch(e){}
+D.cert=D.cert||[];D.lang=D.lang||[];D.cust=D.cust||[];D.exp=(D.exp||[]).map(function(e){return e.co!==undefined?e:{co:e.o||"",pos:e.p||"",sd:"",ed:"",cur:false,resp:e.x||""}});
+if(D.edu.some(function(e){return !e.lv}))D.edu=[{lv:"SSC"},{lv:"HSC"},{lv:"Honours"}];
+function save(){try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}}
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function nl(s){return esc(s).replace(/\n/g,"<br>")}
+function ul(s){var a=String(s||"").split("\n").map(function(x){return x.trim()}).filter(Boolean);return a.length?'<ul style="margin:0;padding-left:18px">'+a.map(function(x){return"<li>"+esc(x)+"</li>"}).join("")+"</ul>":""}
+var CVCSS='.cv{background:#fff;color:#1f2937;font:12.5px/1.55 Arial,"Hind Siliguri",sans-serif;max-width:794px;margin:0 auto;overflow:hidden}.cv *{box-sizing:border-box}.cv h1{margin:0;font-size:26px;line-height:1.2;color:var(--a)}.cv .po{font-size:14px;color:#475569;margin-top:2px}.cv .ct{margin-top:6px}.cv .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:26px 28px 10px}.cv .hd img{width:92px;height:112px;object-fit:cover;flex:none}.cv .bd{padding:0 28px 22px}.cv .s{margin-top:14px}.cv h2{margin:0 0 6px;font-size:13.5px;color:var(--a)}.cv .it{margin-bottom:6px}.cv .it b{display:block}.cv .it span{color:#475569}.cv .kv{display:grid;grid-template-columns:36% 1fr;gap:6px;padding:1px 0}.cv .kv small{font-size:12px;font-weight:700}.cv ul{margin:0;padding-left:18px}.cv table{border-collapse:collapse;width:100%}.cv td,.cv th{border:1px solid #cbd5e1;padding:4px 6px;text-align:left;font-size:12px}.cv th{background:var(--t)}.cv .dec{margin-top:16px;font-size:12px}.cv .sg{display:flex;justify-content:space-between;margin-top:26px}.cv .wm{padding:0 0 12px;text-align:center;color:#9ca3af;font-size:10.5px}'
++'.cv.classic .hd{margin:0 28px;padding:26px 0 10px;border-bottom:2px solid var(--a)}.cv.classic .bd{padding-top:2px}.cv.classic h2{background:var(--a);color:#fff;padding:3px 8px}'
++'.cv.serif .hd{flex-direction:column;align-items:center;text-align:center;margin:26px 28px 0;padding:12px 0;border-top:3px double var(--a);border-bottom:3px double var(--a)}.cv.serif .hd img{order:-1;border-radius:50%;width:96px;height:96px}.cv.serif .ct{display:flex;flex-wrap:wrap;gap:2px 14px;justify-content:center}.cv.serif h2{text-align:center;text-transform:uppercase;letter-spacing:3px;font-size:12px;border-bottom:1px solid #cbd5e1;padding-bottom:3px}'
++'.cv.split .hd{background:var(--a);color:#fff;align-items:center}.cv.split h1,.cv.split .po{color:#fff}.cv.split .hd img{border:3px solid #fff}.cv.split h2{border-left:4px solid var(--a);padding-left:8px;background:var(--t)}'
++'.cv.tl .hd{margin:26px 28px 0;padding:2px 0 2px 14px;border-left:8px solid var(--a);align-items:center}.cv.tl .hd img{border-radius:50%;width:96px;height:96px}.cv.tl h2{text-transform:uppercase;letter-spacing:1.5px;font-size:12.5px;border-bottom:1px solid #cbd5e1;padding-bottom:3px}.cv.tl .it{position:relative;margin:0 0 0 5px;padding:0 0 8px 16px;border-left:2px solid var(--a)}.cv.tl .it::before{content:"";position:absolute;left:-6px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--a)}'
++'.cv.lab .hd{margin:26px 28px 6px;padding:4px 0 4px 14px;border-left:8px solid var(--a)}.cv.lab h1{color:#111}.cv.lab .s{display:grid;grid-template-columns:27% 1fr;gap:12px;border-top:1px solid #e2e8f0;padding-top:10px}.cv.lab h2{text-transform:uppercase;letter-spacing:1px;font-size:11.5px}.cv.lab .dec{border-top:1px solid #e2e8f0;padding-top:10px}'
++'.cv.left .cols,.cv.right .cols{display:flex;align-items:stretch}.cv.left aside,.cv.right aside{width:34%;padding:24px 18px;flex:none}.cv.left .mn,.cv.right .mn{flex:1;min-width:0;padding:6px 22px 18px}.cv.left aside img,.cv.right aside img{display:block;width:108px;height:108px;border-radius:50%;margin:0 auto 14px;object-fit:cover}.cv.left .mn .hd,.cv.right .mn .hd{padding:22px 0 4px}.cv aside .kv{grid-template-columns:1fr;gap:0;margin-bottom:5px}.cv aside h2{text-transform:uppercase;font-size:12px;letter-spacing:1px;padding-bottom:3px;border-bottom:1px solid currentColor}.cv .mn h2{border-bottom:2px solid var(--a);padding-bottom:2px}.cv.left aside{background:var(--a);color:#fff}.cv.left aside h2{color:#fff}.cv.left aside img{border:3px solid #fff}.cv.right .cols{flex-direction:row-reverse}.cv.right aside{background:var(--t)}'
++'.cv.banner .hd.band{background:var(--a);color:#fff;align-items:center;justify-content:flex-start;gap:18px}.cv.banner h1,.cv.banner .po{color:#fff}.cv.banner .hd img{border-radius:50%;width:100px;height:100px;border:3px solid #fff}.cv.banner .cols{display:flex}.cv.banner .mn{flex:1;min-width:0;padding:6px 20px 16px 28px}.cv.banner aside{width:33%;background:var(--t);padding:6px 18px 16px;flex:none}.cv.banner h2{border-left:4px solid var(--a);padding-left:8px}'
++'.cv.cards{background:#f1f5f9}.cv.cards .hd{margin:18px 20px 12px;padding:18px;background:#fff;border-radius:10px;border-top:5px solid var(--a);align-items:center}.cv.cards .hd img{border-radius:10px}.cv.cards .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 20px 18px}.cv.cards .s{margin:0;background:#fff;border-radius:10px;padding:10px 12px;border:1px solid #e2e8f0}.cv.cards .s.full{grid-column:1/-1}.cv.cards h2{display:inline-block;background:var(--t);padding:2px 10px;border-radius:12px}.cv.cards .kv{grid-template-columns:44% 1fr}'
++'.cv.duo .hd{background:var(--t);border-bottom:3px solid var(--a);padding:24px 28px}.cv.duo .cols{display:flex;gap:22px;padding:0 28px}.cv.duo .cols>div{flex:1;min-width:0}.cv.duo h2{border-bottom:1.5px solid var(--a);padding-bottom:2px}.cv.duo .kv{grid-template-columns:46% 1fr}';
+var TP=[["Classic Navy","classic","#0f3d6e","Arial,sans-serif","lin"],["Sidebar Emerald","left","#0b6b4f","Calibri,Arial,sans-serif","sl"],["Right Panel Slate","right","#334155","Arial,sans-serif","sl"],["Banner Indigo","banner","#3730a3","'Trebuchet MS',Arial,sans-serif","bn"],["Timeline Teal","tl","#0f766e","Calibri,Arial,sans-serif","lin"],["Elegant Serif","serif","#7f1d1d","Georgia,serif","lin"],["Split Crimson","split","#9f1239","'Segoe UI',Arial,sans-serif","lin"],["Minimal Label","lab","#111827","Arial,sans-serif","lin"],["Cards Sky","cards","#0369a1","'Segoe UI',Arial,sans-serif","cd"],["Duo Violet","duo","#6d28d9","Calibri,Arial,sans-serif","du"],["Sidebar Charcoal","left","#1f2937","Arial,sans-serif","sl"],["Banner Amber","banner","#b45309","Arial,sans-serif","bn"],["Classic Royal Blue","classic","#1e40af","Arial,sans-serif","lin"],["Classic Forest","cline","#166534","Georgia,serif","lin"],["Classic Charcoal","cboxed","#374151","'Times New Roman',serif","lin"],["Classic Bronze","cdark","#92400e","Georgia,serif","lin"],["Classic Plum","ribbon","#6b21a8","Arial,sans-serif","lin"],["Modern Teal Ribbon","ribbon","#0d9488","Calibri,Arial,sans-serif","lin"],["Sidebar Rose","left","#be185d","Calibri,Arial,sans-serif","sl"],["Minimal Grey","lab","#475569","Arial,sans-serif","lin"]];
+TP.forEach(function(t,i){CVCSS+=".cv.t"+i+"{--a:"+t[2]+";--t:"+t[2]+"1a;font-family:"+t[3]+"}"});
+CVCSS+='.cv.cline .hd{text-align:center;flex-direction:column;align-items:center;border-top:3px double var(--a);border-bottom:3px double var(--a);margin:26px 28px 0;padding:16px 0}.cv.cline h1{color:var(--a)}.cv.cline h2{text-transform:uppercase;letter-spacing:2px;font-size:12px;text-align:center;border-bottom:1px solid #cbd5e1;padding-bottom:3px;color:var(--a)}.cv.cline .hd img{order:-1;border-radius:50%;width:92px;height:92px}.cv.cline .ct{display:flex;flex-wrap:wrap;gap:2px 14px;justify-content:center}';
+CVCSS+='.cv.cboxed h2{display:inline-block;border:1.5px solid var(--a);color:var(--a);padding:3px 10px;border-radius:4px;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-top:16px}.cv.cboxed .hd{border-bottom:1px solid var(--a);padding-bottom:12px}';
+CVCSS+='.cv.cdark .hd{background:var(--a);color:#fff;margin:0;padding:26px 28px}.cv.cdark h1,.cv.cdark .po,.cv.cdark .ct{color:#fff}.cv.cdark .hd img{border:3px solid #fff}.cv.cdark h2{color:var(--a);text-transform:uppercase;letter-spacing:1px;font-size:12.5px;border-bottom:2px solid var(--a);padding-bottom:4px}';
+CVCSS+='.cv.ribbon .hd{background:linear-gradient(90deg,var(--a),var(--t));color:#fff;margin:0;padding:26px 28px}.cv.ribbon h1,.cv.ribbon .po,.cv.ribbon .ct{color:#fff}.cv.ribbon .hd img{border:3px solid #fff}.cv.ribbon h2{color:var(--a);border-left:5px solid var(--a);padding-left:8px;border-bottom:0;font-size:14px}';
+CVCSS+='.cv img.sig{width:auto;height:54px;max-width:200px;object-fit:contain;border:0;margin:0 0 -8px;display:inline-block;vertical-align:bottom}';
+$("cvcss").textContent=CVCSS;
+function sec(t,b,c){return b?'<section class="s '+(c||"")+'"><h2>'+t+'</h2><div class="b">'+b+"</div></section>":""}
+function cv(ti){var d=D;ti=ti==null?(D.t||0):ti;var t=TP[ti],K=t[4],tb=/classic|split|cline|cboxed|cdark|ribbon/.test(t[1]);
+ var edu=eduList(),exp=d.exp.filter(function(e){return e.pos||e.co});
+ var pd=[["Father's Name",d.father],["Mother's Name",d.mother],["Date of Birth",d.dob],["NID No.",d.nid],["Nationality",d.nat],["Religion",d.rel],["Marital Status",d.mar],["Gender",d.gender],["Blood Group",d.blood],["Permanent Address",d.perm]].filter(function(r){return r[1]}).concat(d.cust.filter(function(c){return c.k&&c.v}).map(function(c){return[c.k,c.v]}));
+ var ct=[d.addr&&"Address: "+esc(d.addr),d.phone&&"Mobile: "+esc(d.phone),d.email&&"Email: "+esc(d.email)].filter(Boolean).map(function(x){return"<div>"+x+"</div>"}).join("");
+ var img=d.photo?'<img src="'+d.photo+'" alt="">':"",po=d.post?'<div class="po">'+esc(d.post)+"</div>":"";
+ var h1="<h1>"+esc(d.name||"Your Name")+"</h1>"+po,nm='<div class="nm">'+h1+"</div>",nmc='<div class="nm">'+h1+'<div class="ct">'+ct+"</div></div>";
+ var B={ct:ct&&sec("Contact",ct),obj:sec("Career Objective",d.obj&&nl(d.obj),"full"),
+  edu:sec("Education",edu.length&&(tb?'<table><tr><th>Exam</th><th>Institute</th><th>Result</th><th>Year</th></tr>'+edu.map(function(e){return"<tr><td>"+esc(e.d)+"</td><td>"+esc(e.i)+"</td><td>"+esc(e.r)+"</td><td>"+esc(e.y)+"</td></tr>"}).join("")+"</table>":edu.map(function(e){return'<div class="it"><b>'+esc(e.d)+(e.r?" · "+esc(e.r):"")+"</b><span>"+esc(e.i)+(e.y?" ("+esc(e.y)+")":"")+"</span></div>"}).join("")),"full"),
+  exp:sec("Experience",exp.length&&expHTML(exp),"full"),
+  trn:sec("Certifications",certHTML()),sk:sec("Skills",ul(d.skills)),
+  pd:sec("Personal Details",pd.length&&pd.map(function(r){return'<div class="kv"><small>'+esc(r[0])+"</small><span>"+esc(r[1])+"</span></div>"}).join("")),
+  lg:sec("Languages",langHTML()),hb:sec("Interests",ul(d.hob)),rf:sec("References",d.refs&&nl(d.refs),"full"),
+  dc:'<div class="dec"><b>Declaration:</b> I do hereby declare that all the information stated above is true and correct to the best of my knowledge.</div><div class="sg"><span>Date: __________</span><span>Signature: '+sigHTML()+'</span></div>'};
+ var o,hd='<header class="hd">'+nmc+img+"</header>";
+ if(K==="lin")o=hd+'<div class="bd">'+B.obj+B.edu+B.exp+B.trn+B.sk+B.pd+B.lg+B.hb+B.rf+B.dc+"</div>";
+ else if(K==="sl")o='<div class="cols"><aside>'+img+B.ct+B.sk+B.lg+B.hb+B.pd+B.trn+'</aside><div class="mn"><header class="hd">'+nm+"</header>"+B.obj+B.edu+B.exp+B.rf+B.dc+"</div></div>";
+ else if(K==="bn")o='<header class="hd band">'+img+nm+'</header><div class="cols"><div class="mn">'+B.obj+B.exp+B.edu+B.rf+B.dc+"</div><aside>"+B.ct+B.sk+B.lg+B.hb+B.pd+B.trn+"</aside></div>";
+ else if(K==="cd")o=hd+'<div class="grid">'+B.obj+B.edu+B.exp+B.sk+B.lg+B.hb+B.trn+B.pd+B.rf+'<div class="s full">'+B.dc+"</div></div>";
+ else o=hd+'<div class="cols"><div>'+B.obj+B.edu+B.trn+B.sk+"</div><div>"+B.exp+B.pd+B.lg+B.hb+B.rf+'</div></div><div class="bd">'+B.dc+"</div>";
+ return'<div class="cv t'+ti+" "+t[1]+'">'+o+(d.pro?"":'<div class="wm">Created with CV Banao</div>')+"</div>"}
+function fit(){var w=$("pvw").clientWidth;if(!w)return;var k=Math.min(1,w/794),p=$("pv");p.style.width="794px";p.style.transformOrigin="0 0";p.style.transform="scale("+k+")";$("pvw").style.height=p.offsetHeight*k+"px"}
+
+var RULES={
+ name:function(v){v=v.trim();return !v?"নাম লিখুন":(v.length<2?"নাম খুব ছোট":"")},
+ phone:function(v){v=v.trim();if(!v)return"মোবাইল নম্বর লিখুন";return /^01[3-9]\d{8}$/.test(v.replace(/[\s-]/g,"").replace(/^\+?880/,"0"))?"":"সঠিক মোবাইল নম্বর দিন, যেমন 01XXXXXXXXX"},
+ email:function(v){v=v.trim();if(!v)return"ইমেইল লিখুন";return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)?"":"সঠিক ইমেইল দিন, যেমন name@gmail.com"}
+};
+var REQ=["name","phone","email"];
+function checkField(k){
+ var el=document.querySelector('[data-k="'+k+'"]');if(!el||!RULES[k])return true;
+ var msg=RULES[k](D[k]||"");var box=el.parentNode;var e=box.querySelector(".err");
+ if(!e){e=document.createElement("small");e.className="err";box.appendChild(e)}
+ e.textContent=msg;el.classList.toggle("bad",!!msg);return !msg;
+}
+function validateInfo(){
+ var ok=true,first=null;
+ REQ.forEach(function(k){var el=document.querySelector('[data-k="'+k+'"]');if(el)el.dataset.touched=1;if(!checkField(k)){ok=false;if(!first)first=document.querySelector('[data-k="'+k+'"]')}});
+ if(!ok){if(first){first.focus();first.scrollIntoView({behavior:"smooth",block:"center"})}}
+ return ok;
+}
+function prev(){$("pv").innerHTML=cv();fit()}
+window.addEventListener("resize",fit);
+var G=[["ব্যক্তিগত তথ্য"],["name","পুরো নাম (ইংরেজিতে)"],["post","কোন পদের জন্য আবেদন"],["phone","মোবাইল নম্বর",0,1],["email","ইমেইল",0,1],["addr","বর্তমান ঠিকানা"],["#ph"],
+["ক্যারিয়ার অবজেক্টিভ"],["obj","২-৩ লাইনে লিখুন",1],["#edu"],["#exp"],
+["#cert"],["দক্ষতা ও শখ"],["skills","দক্ষতা (প্রতি লাইনে একটি)",1],["hob","শখ/আগ্রহ (প্রতি লাইনে একটি)",1],["#lang"],
+["ব্যক্তিগত বিবরণ"],["father","পিতার নাম",0,1],["mother","মাতার নাম",0,1],["dob","জন্ম তারিখ (15 May 2000)",0,1],["nid","জাতীয় পরিচয়পত্র নম্বর",0,1],["nat","জাতীয়তা",0,1],["rel","ধর্ম",0,1],["mar","বৈবাহিক অবস্থা",0,1],["gender","লিঙ্গ",2,1,["Male","Female","Other"]],["blood","রক্তের গ্রুপ",2,1,["A+","A-","B+","B-","AB+","AB-","O+","O-"]],["perm","স্থায়ী ঠিকানা"],
+["#cust"],["#sig"],["রেফারেন্স"],["refs","নাম, পদ, প্রতিষ্ঠান ও মোবাইল",1]];
+var f=$("form"),card=null,fl=null;
+G.forEach(function(g){var k=g[0];
+ if(g.length===1&&k.charAt(0)!=="#"){card=document.createElement("div");card.className="card";card.innerHTML="<h2>"+k+"</h2>";fl=document.createElement("div");fl.className="fl";card.appendChild(fl);f.appendChild(card);return}
+ if(k==="#ph"){fl.insertAdjacentHTML("beforeend",'<div class="f full"><label>পাসপোর্ট সাইজ ছবি</label><input type="file" id="ph" accept="image/*"></div>');return}
+ if(["#edu","#exp","#cert","#lang","#cust","#sig"].indexOf(k)>-1){card=document.createElement("div");card.className="card";card.id=k.slice(1);f.appendChild(card);return}
+ var w=document.createElement("div");w.className="f"+(g[3]?"":" full");var l=document.createElement("label");l.textContent=g[1];var i=document.createElement(g[2]===2?"select":g[2]?"textarea":"input");if(g[2]===2)i.innerHTML='<option value="">বাছুন</option>'+g[4].map(function(o){return"<option>"+o+"</option>"}).join("");i.value=D[k]||"";i.dataset.k=k;i.oninput=function(){D[k]=i.value;save();prev();if(i.dataset.touched)checkField(k)};i.onblur=function(){i.dataset.touched=1;checkField(k)};w.appendChild(l);w.appendChild(i);fl.appendChild(w)});
+var LV={"SSC":"s","Dakhil":"s","HSC":"h","Alim":"h","Honours":"u","Degree (Pass)":"u","Masters":"m"};
+var BRD=["Dhaka Board","Chattogram Board","Rajshahi Board","Cumilla Board","Jashore Board","Barishal Board","Sylhet Board","Dinajpur Board","Mymensingh Board","Bangladesh Madrasah Education Board","Bangladesh Technical Education Board (BTEB)"];
+var GRP=["Science","Business Studies","Humanities","General"];
+var EX={"Honours":["B.Sc (Hons)","B.A (Hons)","B.S.S (Hons)","B.B.S (Hons)","B.Com (Hons)","B.B.A","B.Sc in Engineering","B.Sc in Agriculture","B.Pharm (Hons)","LL.B (Hons)","B.Ed (Hons)","B.Arch","B.Sc in Nursing","MBBS","BDS","DVM"],"Degree (Pass)":["B.A (Pass)","B.Sc (Pass)","B.Com (Pass)","B.S.S (Pass)","B.B.S (Pass)"],"Masters":["M.A","M.Sc","M.S.S","M.B.S","M.Com","M.B.A","EMBA","M.Sc in Engineering","LL.M","M.Ed","M.Pharm","MPH","M.Phil"]};
+var UNI=["National University","University of Dhaka","University of Rajshahi","University of Chittagong","Jahangirnagar University","Khulna University","Islamic University, Kushtia","Bangladesh University of Engineering and Technology (BUET)","Chittagong University of Engineering & Technology (CUET)","Khulna University of Engineering & Technology (KUET)","Rajshahi University of Engineering & Technology (RUET)","Dhaka University of Engineering & Technology (DUET)","Bangladesh Agricultural University","Shahjalal University of Science & Technology (SUST)","Jagannath University","Comilla University","Begum Rokeya University","Jatiya Kabi Kazi Nazrul Islam University","Patuakhali Science & Technology University","Hajee Mohammad Danesh Science & Technology University","Mawlana Bhashani Science & Technology University","Noakhali Science & Technology University","Bangladesh University of Professionals","Bangladesh Open University","Islamic Arabic University","North South University","BRAC University","Independent University, Bangladesh (IUB)","American International University-Bangladesh (AIUB)","East West University","Daffodil International University","United International University","Ahsanullah University of Science & Technology","Southeast University","Stamford University Bangladesh","Eastern University","Northern University Bangladesh","Green University of Bangladesh","University of Liberal Arts Bangladesh","Bangladesh University of Business & Technology","Presidency University","Uttara University","Metropolitan University","Dhaka International University","Other"];
+var SUBJ=["Computer Science & Engineering","Electrical & Electronic Engineering","Civil Engineering","Mechanical Engineering","Textile Engineering","Information & Communication Technology","Accounting","Management","Marketing","Finance","Finance & Banking","Business Administration","Economics","English","Bangla","Political Science","Sociology","Social Work","History","Islamic Studies","Philosophy","Law","Physics","Chemistry","Mathematics","Statistics","Botany","Zoology","Biochemistry","Pharmacy","Public Health","Geography","Agriculture"],YRS=[];
+for(var yy=new Date().getFullYear()+1;yy>=1985;yy--)YRS.push(String(yy));
+function ed(x){return String(x).replace(/[০-৯]/g,function(d){return "০১২৩৪৫৬৭৮৯".indexOf(d)}).replace(/[^0-9.]/g,"")}
+function rk(e){return {s:1,h:2,u:3,m:4}[LV[e.lv]||"s"]}
+function ev(e){var t=LV[e.lv]||"s",u=t==="u"||t==="m",bn=e.bd==="Other"?e.bx:e.bd,g=e.gr?(e.gr==="General"?"General":e.gr+" Group"):"",x=e.ex||e.lv||"";
+ return{d:u?x+(e.gr?(/\sin\s/.test(x)?" ("+e.gr+")":" in "+e.gr):""):(e.lv||"")+(g?" ("+g+")":""),i:[e.ins,bn].filter(Boolean).join(", "),r:e.r?(u?"CGPA "+e.r+" (out of 4.00)":"GPA "+e.r+" (out of 5.00)"):"",y:e.y||""}}
+function eduList(){return D.edu.filter(function(e){return e.bd||e.bx||e.ins||e.gr||e.ex||e.r||e.y}).sort(function(a,b){return rk(b)-rk(a)}).map(ev)}
+function renderEdu(){
+ if(!$("dl-subj")){var dl=document.createElement("datalist");dl.id="dl-subj";dl.innerHTML=SUBJ.map(function(o){return'<option value="'+o+'">'}).join("");document.body.appendChild(dl)}
+ var c=$("edu");c.innerHTML="<h2>শিক্ষাগত যোগ্যতা</h2>";
+ D.edu.forEach(function(row,n){
+  var t=LV[row.lv]||"s",u=t==="u"||t==="m",mx=u?4:5,box=document.createElement("div"),fl=document.createElement("div");box.className="row";fl.className="fl";box.appendChild(fl);
+  function add(lb,el,full){var w=document.createElement("div"),l=document.createElement("label");w.className="f"+(full?" full":"");l.textContent=lb;w.appendChild(l);w.appendChild(el);fl.appendChild(w)}
+  function sel(opts,key,ph,re){var s=document.createElement("select");s.innerHTML='<option value="">'+ph+"</option>"+opts.map(function(o){return"<option"+(o===row[key]?" selected":"")+">"+o+"</option>"}).join("");s.onchange=function(){row[key]=s.value;if(key==="lv"){row.ex="";row.gr=""}save();prev();if(re)renderEdu()};return s}
+  function inp(key,ph,list,mode){var i=document.createElement("input");i.value=row[key]||"";i.placeholder=ph||"";if(list)i.setAttribute("list",list);if(mode)i.inputMode=mode;i.oninput=function(){if(mode){i.value=ed(i.value)}row[key]=i.value;save();prev()};if(mode)i.onblur=function(){var v=parseFloat(i.value);if(v>mx){i.value=mx.toFixed(2);row[key]=i.value;save();prev()}};return i}
+  add("পরীক্ষা",sel(Object.keys(LV),"lv","পরীক্ষা বাছুন",1),1);
+  if(!u){add("বোর্ড",sel(BRD,"bd","বোর্ড বাছুন"));add("গ্রুপ / বিভাগ",sel(GRP,"gr","গ্রুপ বাছুন"));add("প্রতিষ্ঠানের নাম (স্কুল/কলেজ/মাদ্রাসা)",inp("ins","প্রতিষ্ঠানের নাম"),1)}
+  else{add("পরীক্ষার নাম",sel(EX[row.lv]||[],"ex","ডিগ্রি বাছুন"),1);add("বিভাগ / সাবজেক্ট",inp("gr","যেমন Computer Science & Engineering","dl-subj"),1);add("বিশ্ববিদ্যালয়",sel(UNI,"bd","বিশ্ববিদ্যালয় বাছুন",1),1);if(row.bd==="Other")add("বিশ্ববিদ্যালয়ের নাম লিখুন",inp("bx",""),1);add("কলেজ/ইনস্টিটিউট (ঐচ্ছিক)",inp("ins","প্রতিষ্ঠানের নাম"),1)}
+  add("পাসের সাল",sel(YRS,"y","সাল বাছুন"));
+  add(u?"সিজিপিএ (৪.০০ এর মধ্যে)":"জিপিএ (৫.০০ এর মধ্যে)",inp("r",u?"যেমন 3.75":"যেমন 5.00",null,"decimal"));
+  var x=document.createElement("button");x.className="sm";x.textContent="মুছুন";x.onclick=function(){D.edu.splice(n,1);save();renderEdu();prev()};box.appendChild(x);c.appendChild(box)});
+ var a=document.createElement("button");a.className="sm";a.textContent="+ শিক্ষাগত যোগ্যতা যোগ করুন";a.onclick=function(){D.edu.push({lv:"Masters"});save();renderEdu()};c.appendChild(a)}
+function expHTML(L){return L.map(function(e){var w=[dt(e.sd),e.cur?"Present":dt(e.ed)].filter(Boolean).join(" – ");return'<div class="it"><b>'+esc(e.pos)+(e.co?", "+esc(e.co):"")+"</b>"+(w?"<span>"+esc(w)+"</span>":"")+(e.resp?ul(e.resp):"")+"</div>"}).join("")}
+function certHTML(){return D.cert.filter(function(c){return c.n}).map(function(c){return'<div class="it"><b>'+esc(c.n)+"</b><span>"+[esc(c.i),c.y?"("+esc(c.y)+")":""].filter(Boolean).join(" ")+"</span></div>"}).join("")}
+function langHTML(){return D.lang.filter(function(l){return l.n}).map(function(l){var nm=l.n==="Other"?(l.on||"Other"):l.n;return'<div class="kv"><small>'+esc(nm)+"</small><span>"+esc(l.l||"")+"</span></div>"}).join("")}
+var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function dt(v){if(!v)return"";var q=String(v).split("-");return q.length>1?MON[+q[1]-1]+" "+q[0]:q[0]}
+var LANGS=["Bangla","English","Hindi","Urdu","Arabic","French","German","Spanish","Japanese","Chinese","Korean","Other"],LVL=["Native","Fluent","Conversational","Beginner"];
+function fld(fl,lb,el,full){var w=document.createElement("div"),l=document.createElement("label");w.className="f"+(full?" full":"");l.textContent=lb;w.appendChild(l);w.appendChild(el);fl.appendChild(w)}
+function inpE(row,key,ph,type){var i=document.createElement("input");i.type=type||"text";i.value=row[key]||"";i.placeholder=ph||"";i.oninput=i.onchange=function(){row[key]=i.value;save();prev()};return i}
+function selE(opts,row,key,ph,cb){var s=document.createElement("select");s.innerHTML='<option value="">'+ph+"</option>"+opts.map(function(o){return'<option value="'+o+'"'+(o===row[key]?" selected":"")+">"+o+"</option>"}).join("");s.onchange=function(){row[key]=s.value;save();prev();if(cb)cb()};return s}
+function delBtn(list,n,re){var x=document.createElement("button");x.className="sm";x.textContent="মুছুন";x.onclick=function(){list.splice(n,1);save();re();prev()};return x}
+function addBtn(t,fn){var a=document.createElement("button");a.className="sm";a.textContent=t;a.onclick=fn;return a}
+function renderExp(){var c=$("exp");c.innerHTML="<h2>কাজের অভিজ্ঞতা</h2>";
+ D.exp.forEach(function(row,n){var box=document.createElement("div"),fl=document.createElement("div");box.className="row";fl.className="fl";box.appendChild(fl);
+  fld(fl,"কোম্পানির নাম",inpE(row,"co","যেমন: ABC Ltd."));
+  fld(fl,"পদবি",inpE(row,"pos","যেমন: Accounts Officer"));
+  fld(fl,"শুরুর তারিখ",inpE(row,"sd","","month"));
+  var ed=inpE(row,"ed","","month");ed.disabled=!!row.cur;if(row.cur)ed.value="";
+  fld(fl,"শেষের তারিখ",ed);
+  var lb=document.createElement("label");lb.style.cssText="display:flex;align-items:center;gap:8px;font-size:14px;grid-column:1/-1;margin:4px 0 0";
+  var ck=document.createElement("input");ck.type="checkbox";ck.checked=!!row.cur;ck.style.cssText="width:18px;height:18px;margin:0";
+  ck.onchange=function(){row.cur=ck.checked;if(row.cur)row.ed="";save();renderExp();prev()};
+  lb.appendChild(ck);lb.appendChild(document.createTextNode(" বর্তমানে এখানে কাজ করছি"));fl.appendChild(lb);
+  var ta=document.createElement("textarea");ta.value=row.resp||"";ta.placeholder="প্রতি লাইনে একটি দায়িত্ব লিখুন";ta.oninput=function(){row.resp=ta.value;save();prev()};
+  fld(fl,"দায়িত্ব ও কাজ",ta,1);
+  box.appendChild(delBtn(D.exp,n,renderExp));c.appendChild(box)});
+ c.appendChild(addBtn("+ অভিজ্ঞতা যোগ করুন",function(){D.exp.push({co:"",pos:"",sd:"",ed:"",cur:false,resp:""});save();renderExp()}))}
+function renderCert(){var c=$("cert");c.innerHTML="<h2>সার্টিফিকেশন</h2>";
+ D.cert.forEach(function(row,n){var box=document.createElement("div"),fl=document.createElement("div");box.className="row";fl.className="fl";box.appendChild(fl);
+  fld(fl,"সার্টিফিকেট/কোর্সের নাম",inpE(row,"n","যেমন: Certified Accountant"),1);
+  fld(fl,"প্রতিষ্ঠান / প্রদানকারী",inpE(row,"i","যেমন: ICMAB"));
+  fld(fl,"সাল",selE(YRS,row,"y","সাল বাছুন"));
+  box.appendChild(delBtn(D.cert,n,renderCert));c.appendChild(box)});
+ c.appendChild(addBtn("+ সার্টিফিকেশন যোগ করুন",function(){D.cert.push({n:"",i:"",y:""});save();renderCert()}))}
+function renderLang(){var c=$("lang");c.innerHTML="<h2>ভাষা</h2>";
+ D.lang.forEach(function(row,n){var box=document.createElement("div"),fl=document.createElement("div");box.className="row";fl.className="fl";box.appendChild(fl);
+  fld(fl,"ভাষা",selE(LANGS,row,"n","ভাষা বাছুন",renderLang));
+  if(row.n==="Other")fld(fl,"ভাষার নাম লিখুন",inpE(row,"on","যেমন: Italian"));
+  fld(fl,"দক্ষতার স্তর",selE(LVL,row,"l","স্তর বাছুন"));
+  box.appendChild(delBtn(D.lang,n,renderLang));c.appendChild(box)});
+ c.appendChild(addBtn("+ ভাষা যোগ করুন",function(){D.lang.push({n:"",l:""});save();renderLang()}))}
+function renderCust(){var c=$("cust");c.innerHTML="<h2>কাস্টম তথ্য</h2><p style='font-size:13px;color:var(--mute);margin:0 0 4px'>যেকোনো নিজের তথ্য যোগ করুন। যেমন: ড্রাইভিং লাইসেন্স — আছে</p>";
+ D.cust.forEach(function(row,n){var box=document.createElement("div"),fl=document.createElement("div");box.className="row";fl.className="fl";box.appendChild(fl);
+  fld(fl,"তথ্যের নাম",inpE(row,"k","যেমন: ড্রাইভিং লাইসেন্স"));
+  fld(fl,"তথ্য",inpE(row,"v","যেমন: আছে"));
+  box.appendChild(delBtn(D.cust,n,renderCust));c.appendChild(box)});
+ c.appendChild(addBtn("+ কাস্টম তথ্য যোগ করুন",function(){D.cust.push({k:"",v:""});save();renderCust()}))}
+function rep(id,title,key,cols,blank){
+ var c=$(id);c.innerHTML="<h2>"+title+"</h2>";
+ D[key].forEach(function(row,n){var r=document.createElement("div");r.className="row";
+  cols.forEach(function(cl){var l=document.createElement("label");l.textContent=cl[1];var i=document.createElement(cl[2]?"textarea":"input");i.value=row[cl[0]]||"";i.oninput=function(){row[cl[0]]=i.value;save();prev()};r.appendChild(l);r.appendChild(i)});
+  var x=document.createElement("button");x.className="sm";x.textContent="মুছুন";x.onclick=function(){D[key].splice(n,1);save();rep(id,title,key,cols,blank);prev()};r.appendChild(x);c.appendChild(r)});
+ var a=document.createElement("button");a.className="sm";a.textContent="+ যোগ করুন";a.onclick=function(){D[key].push(JSON.parse(JSON.stringify(blank)));save();rep(id,title,key,cols,blank);prev()};c.appendChild(a)}
+renderEdu();
+renderExp();renderCert();renderLang();renderCust();renderSig();
+$("ph").onchange=function(){var fl=this.files[0];if(!fl)return;var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement("canvas"),s=Math.min(1,300/Math.max(im.width,im.height));c.width=im.width*s;c.height=im.height*s;c.getContext("2d").drawImage(im,0,0,c.width,c.height);D.photo=c.toDataURL("image/jpeg",.85);save();prev()};im.src=fr.result};fr.readAsDataURL(fl)};
+function lib(u){return new Promise(function(ok,no){var e=document.createElement("script");e.src=u;e.onload=ok;e.onerror=no;document.head.appendChild(e)})}
+async function mkpdf(){
+ if(!window.html2canvas)await lib("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js");
+ if(!window.jspdf)await lib("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");
+ if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+ var box=document.createElement("div");box.id="pdfbox";box.style.cssText="position:absolute;left:-10000px;top:0;width:794px;background:#fff";box.innerHTML=cv();document.body.appendChild(box);
+ var el=box.firstChild;
+ try{
+  var cs=await html2canvas(el,{scale:2,backgroundColor:"#fff",useCORS:true,windowWidth:794,windowHeight:Math.max(innerHeight,el.offsetHeight),scrollX:0,scrollY:0,onclone:function(dc){var b=dc.getElementById("pdfbox");b.style.left="0";b.style.top="0"}});
+  var H=el.offsetHeight,top=el.getBoundingClientRect().top;
+  var L=[].slice.call(el.querySelectorAll(".it,.kv,li,tr,h1,h2,.po,.dec,.sg,.ct div,img")).map(function(n){var r=n.getBoundingClientRect();return[r.top-top,r.bottom-top]});
+  var pdf=new window.jspdf.jsPDF({unit:"mm",format:"a4"}),PH=1123,M=24,y0=0,pn=0,k=cs.width/794;
+  while(y0<H-1){
+   var av=pn?PH-2*M:PH-M,end=y0+av;
+   if(H-y0<=av)end=H;else{for(var y=end;y>end-av*.4;y-=3){if(!L.some(function(q){return q[0]<y&&q[1]>y})){end=y;break}}}
+   var c=document.createElement("canvas");c.width=cs.width;c.height=Math.round((end-y0)*k);
+   var cx=c.getContext("2d");cx.fillStyle="#fff";cx.fillRect(0,0,c.width,c.height);cx.drawImage(cs,0,Math.round(y0*k),cs.width,c.height,0,0,c.width,c.height);
+   if(pn)pdf.addPage();
+   pdf.addImage(c.toDataURL("image/jpeg",.92),"JPEG",0,pn?M*210/794:0,210,(end-y0)*210/794);
+   y0=end;pn++}
+  return pdf.output("blob")
+ }finally{box.remove()}}
+$("dl").onclick=async function(){if(!validateInfo()){step(0);return}var b=$("dl"),t=b.textContent,fn="CV-"+(D.name||"my").replace(/[^\w]+/g,"-")+"."+EXT[FMT];
+ b.disabled=true;b.textContent="ফাইল তৈরি হচ্ছে…";
+ try{var blob=await makeFile(FMT),dl=null;
+  try{if(typeof claude!=="undefined")dl=await claude.use("downloads")}catch(e){}
+  if(dl){try{await dl.save({filename:fn,data:blob})}catch(e){if(!e||e.code!=="declined")alert("এই ভিউতে ডাউনলোড করা যাচ্ছে না")}}
+  else{var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fn;document.body.appendChild(a);a.click();a.remove()}
+ }catch(e){alert("ফাইল তৈরি করা যায়নি। ইন্টারনেট সংযোগ দেখে আবার চেষ্টা করুন।")}
+ b.disabled=false;b.textContent=t};
+var FMT="pdf",EXT={pdf:"pdf",doc:"doc",png:"png",jpg:"jpg"},LBL={pdf:"PDF ডাউনলোড করুন (A4)",doc:"Word ফাইল ডাউনলোড করুন (.doc)",png:"PNG ছবি ডাউনলোড করুন",jpg:"JPG ছবি ডাউনলোড করুন"};
+function setFmt(f){FMT=f;document.querySelectorAll(".fm").forEach(function(x){x.classList.toggle("on",x.dataset.f===f)});$("dl").textContent=LBL[f]}
+document.querySelectorAll(".fm").forEach(function(x){x.onclick=function(){setFmt(x.dataset.f)}});
+async function makeFile(f){if(f==="pdf")return mkpdf();if(f==="doc")return mkdoc();return mkimg(f==="png"?"image/png":"image/jpeg")}
+function mkdoc(){var h='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><style>@page{size:A4;margin:12mm}body{margin:0}'+CVCSS+'</style></head><body>'+cv()+'</body></html>';return new Blob(["\ufeff",h],{type:"application/msword"})}
+async function mkimg(type){
+ if(!window.html2canvas)await lib("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js");
+ if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+ var box=document.createElement("div");box.style.cssText="position:absolute;left:-10000px;top:0;width:794px;background:#fff";box.innerHTML=cv();document.body.appendChild(box);
+ try{var c=await html2canvas(box.firstChild,{scale:2,backgroundColor:"#fff",useCORS:true,windowWidth:794});
+  return await new Promise(function(ok,no){c.toBlob(function(b){b?ok(b):no(new Error("img"))},type,.92)})}
+ finally{box.remove()}}
+
+var ATS_VERBS=["managed","led","developed","prepared","processed","handled","coordinated","improved","reduced","increased","designed","implemented","supervised","analyzed","analysed","maintained","organized","organised","achieved","delivered","created","built","established","planned","operated","assisted","trained","monitored","ensured","launched","negotiated","completed","researched","resolved","streamlined","contributed","drafted","reviewed","updated","introduced","supported","executed","optimized","optimised","secured","collaborated"];
+var ATS_STOP=["and","the","with","for","you","your","will","are","our","has","have","this","that","from","not","job","role","work","able","must","can","who","all","any","new","per","also","such","their","they","other","year","years","experience","skills","skill","good","strong","knowledge","required","preferred","candidate","position","company","team","ability","using","include","including","make","made","into","over","about","more","than","through","within","across","looking","join","seeking","responsibilities","requirements","qualification","salary","apply","date","deadline"];
+function atsText(){
+ var parts=[];
+ ["name","post","phone","email","addr","obj","father","mother","dob","nid","nat","rel","mar","perm","skills","hob","refs"].forEach(function(k){parts.push(D[k]||"")});
+ D.edu.forEach(function(e){parts.push(e.lv,e.bd,e.bx,e.gr,e.ins,e.ex,e.r,e.y)});
+ D.exp.forEach(function(e){parts.push(e.co,e.pos,e.resp)});
+ D.cert.forEach(function(c){parts.push(c.n,c.i,c.y)});
+ D.lang.forEach(function(l){parts.push(l.n,l.on,l.l)});
+ D.cust.forEach(function(c){parts.push(c.k,c.v)});
+ return parts.filter(Boolean).join("\n");
+}
+function atsTerms(jd,n){
+ var words=(jd.toLowerCase().match(/[a-z][a-z+#.\-]{2,}/g)||[]);
+ var cnt={};
+ words.forEach(function(w){w=w.replace(/[.\-]+$/,"");if(w.length<3||ATS_STOP.indexOf(w)>-1)return;cnt[w]=(cnt[w]||0)+1});
+ return Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a]||b.length-a.length}).slice(0,n);
+}
+function atsCheck(jd){
+ var items=[],wsum=0,got=0;
+ function add(label,w,p,tip){p=Math.max(0,Math.min(1,p));items.push({label:label,p:p,tip:p>=1?"":tip});wsum+=w;got+=w*p}
+ var phoneOk=/^01[3-9]\d{8}$/.test((D.phone||"").replace(/[\s-]/g,"").replace(/^\+?880/,"0"));
+ var emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((D.email||"").trim());
+ add("নাম, সঠিক মোবাইল ও ইমেইল আছে",15,((D.name||"").trim().length>=2?1:0)*.4+(phoneOk?1:0)*.3+(emailOk?1:0)*.3,"নাম, সঠিক মোবাইল নম্বর (01XXXXXXXXX) ও ইমেইল দিন");
+ add("বর্তমান ঠিকানা দেওয়া আছে",5,(D.addr||"").trim()?1:0,"বর্তমান ঠিকানা যোগ করুন");
+ var eduL=eduList(),expL=D.exp.filter(function(e){return e.pos||e.co});
+ add("শিক্ষাগত যোগ্যতা আছে",12,eduL.length?1:0,"কমপক্ষে একটি শিক্ষাগত যোগ্যতা যোগ করুন");
+ add("কাজের অভিজ্ঞতা বা প্রকল্প আছে",12,expL.length?1:0,"অভিজ্ঞতা না থাকলে ইন্টার্নশিপ, একাডেমিক প্রজেক্ট বা স্বেচ্ছাসেবী কাজ যোগ করুন");
+ add("দক্ষতার তালিকা আছে",8,(D.skills||"").trim()?1:0,"কম্পিউটার ও পেশাগত দক্ষতা প্রতি লাইনে একটি করে লিখুন");
+ var withRes=eduL.filter(function(e){return e.r});
+ add("জিপিএ/সিজিপিএর সাথে স্কেল লেখা আছে",8,withRes.length?withRes.filter(function(e){return /out of/i.test(e.r)}).length/withRes.length:0,"GPA/CGPA-র পাশে স্কেল লিখুন, যেমন (out of 5.00)");
+ var bullets=[];expL.forEach(function(e){(e.resp||"").split("\n").forEach(function(b){if(b.trim())bullets.push(b.trim())})});
+ if(bullets.length){
+  var verbs=bullets.filter(function(b){return ATS_VERBS.indexOf(b.split(/\s+/)[0].toLowerCase().replace(/[^a-z]/g,""))>-1}).length/bullets.length;
+  add("বুলেট একটি কাজের শব্দ (Managed, Prepared...) দিয়ে শুরু",10,verbs/.6,"প্রতিটি বুলেট একটি কাজের শব্দ দিয়ে শুরু করুন, যেমন Prepared, Managed, Processed");
+  var meas=bullets.filter(function(b){return /\d|%/.test(b)}).length/bullets.length;
+  add("ফলাফল সংখ্যা বা % দিয়ে পরিমাপযোগ্য",10,meas/.3,"কিছু বুলেটে সংখ্যা যোগ করুন, যেমন '৫ জনের দল' বা '২০% কমিয়েছি'");
+  var bcOk=expL.every(function(e){var n=(e.resp||"").split("\n").filter(function(x){return x.trim()}).length;return n>=2&&n<=6});
+  add("প্রতি অভিজ্ঞতায় ২–৬টি বুলেট",5,bcOk?1:0,"প্রতিটি অভিজ্ঞতায় ২ থেকে ৬টি বুলেট রাখুন");
+ }
+ var len=atsText().length;
+ add("সিভির দৈর্ঘ্য উপযুক্ত",5,(len>=350&&len<=4000)?1:(len<350?len/350:0.5),len<350?"আরও তথ্য যোগ করুন":"সিভি অনেক বড়, অপ্রয়োজনীয় অংশ বাদ দিন");
+ var kind=TP[D.t||0][1];
+ add("একক কলামের ATS-বান্ধব টেমপ্লেট",10,["classic","tl","serif","lab","cline","cboxed","cdark","ribbon"].indexOf(kind)>-1?1:0,"সাইডবার, ব্যানার বা কার্ড টেমপ্লেটে কলাম বা বক্স থাকে, ATS এগুলো ভালো পড়তে পারে না। ক্লাসিক বা টাইমলাইন টেমপ্লেট বেছে নিন");
+ var kw=null;
+ if(jd&&jd.trim()){
+  var terms=atsTerms(jd,25),txt=atsText().toLowerCase();
+  var have=terms.filter(function(t){return txt.indexOf(t)>-1});
+  var missing=terms.filter(function(t){return have.indexOf(t)<0}).slice(0,12);
+  kw={total:terms.length,have:have.length,missing:missing};
+  add("চাকরির বিবরণের শব্দের সাথে মিল",15,terms.length?have.length/(terms.length*.5):0,"বিবরণের গুরুত্বপূর্ণ শব্দগুলো নিজের অভিজ্ঞতার সাথে মিললে সিভিতে স্বাভাবিকভাবে যোগ করুন");
+ }
+ return {score:wsum?Math.round(got/wsum*100):0,items:items,kw:kw};
+}
+function atsRender(r){
+ var msg=r.score>=80?"খুব ভালো · ATS-ফ্রেন্ডলি সিভি":(r.score>=60?"ভালো · আরও উন্নতির সুযোগ আছে":"উন্নতির জন্য কিছু সাজেশন দেখুন");
+ var h='<div class="ats-top"><div class="ats-ring" style="--ring:conic-gradient(var(--g1) '+(r.score*3.6)+'deg,#e6efea 0)"><b>'+r.score+'</b><small>/১০০</small></div><div><p class="ats-msg">ATS-ফ্রেন্ডলি স্কোর</p><p>'+msg+'</p></div></div>';
+ h+='<ul class="ats-list">';
+ r.items.forEach(function(it){
+  var cls=it.p>=1?"ok":(it.p>0?"part":"no");
+  var mark=it.p>=1?"✓":(it.p>0?"!":"✕");
+  h+='<li><span class="ats-dot '+cls+'">'+mark+'</span><div>'+esc(it.label)+(it.tip?'<span class="ats-tip">'+esc(it.tip)+'</span>':'')+'</div></li>';
+ });
+ h+='</ul>';
+ if(r.kw){
+  h+='<div class="ats-kw"><b>চাকরির বিবরণের শব্দ মিল: '+r.kw.have+' / '+r.kw.total+'</b>';
+  if(r.kw.missing.length)h+='<div class="chips">'+r.kw.missing.map(function(m){return'<span class="chip">'+esc(m)+'</span>'}).join("")+'</div><small style="color:var(--mute)">উপরের শব্দগুলো সিভিতে পাওয়া যায়নি। নিজের অভিজ্ঞতার সাথে মিললে স্বাভাবিকভাবে যোগ করুন।</small>';
+  h+='</div>';
+ }
+ h+='<p class="ats-disc">এটি একটি সাধারণ সাজেশন। প্রতিটি ATS আলাদাভাবে কাজ করে, তাই কোনো নির্দিষ্ট স্কোর বা নিয়োগের নিশ্চয়তা নেই।</p>';
+ return h;
+}
+(function(){
+ var btn=document.getElementById("atsBtn");
+ if(btn)btn.onclick=function(){
+  var r=atsCheck(document.getElementById("jd").value||"");
+  document.getElementById("atsOut").innerHTML=atsRender(r);
+  document.getElementById("atsOut").scrollIntoView({behavior:"smooth",block:"nearest"});
+ };
+})();
+
+function clCapFirst(t){t=(t||"").trim();return t.charAt(0).toLowerCase()+t.slice(1).replace(/\.$/,"")}
+function coverLetter(jd,o){
+ var name=(D.name||"").trim()||"[আপনার নাম]",post=(D.post||"").trim()||"[পদের নাম]",co=(o.company||"").trim(),coc=co.replace(/\.+$/,"");
+ var phone=(D.phone||"").trim()||"[মোবাইল]",email=(D.email||"").trim()||"[ইমেইল]";
+ var eduL=eduList(),e0=eduL[0]||null;
+ var skills=(D.skills||"").split("\n").map(function(x){return x.trim()}).filter(Boolean);
+ var jdl=(jd||"").toLowerCase();
+ var matched=skills.filter(function(sk){return sk.toLowerCase().split(/[^a-z0-9+#]+/).some(function(w){return w.length>=3&&jdl.indexOf(w)>-1})});
+ var exp=D.exp.filter(function(e){return e.pos||e.co})[0]||null;
+ var bullets=exp?(exp.resp||"").split("\n").map(function(x){return x.trim()}).filter(Boolean):[];
+ var extra=["officer","accounts","account","executive","junior","senior","manager","assistant","position","role","limited","ltd","company","organisation","organization","hiring","team","candidate"];
+ var terms=jd&&jd.trim()?atsTerms(jd,14).filter(function(t){return extra.indexOf(t)<0}):[];
+ var cvl=((D.skills||"")+" "+bullets.join(" ")+" "+D.cert.map(function(c){return c.n}).join(" ")).toLowerCase();
+ var mlow=matched.join(" ").toLowerCase();
+ var shared=terms.filter(function(t){return cvl.indexOf(t)>-1&&mlow.indexOf(t)<0}).slice(0,4);
+ var friendly=o.tone==="friendly";
+ if(o.lang==="bn"){
+  var L=[];
+  L.push("প্রিয় "+(co?co+" কর্তৃপক্ষ":"নিয়োগকর্তা")+",");L.push("");
+  L.push((friendly?"আমি আগ্রহ নিয়ে ":"আমি বিনীতভাবে ")+post+" পদে আবেদন করতে চাই"+(co?" "+co+"-এ":"")+"। আমার নাম "+name+"।"+(e0&&e0.d?" আমার শিক্ষাগত পটভূমি: "+e0.d+(e0.i?", "+e0.i:"")+"।":""));L.push("");
+  if(exp)L.push("আমার অভিজ্ঞতায় "+(exp.pos?exp.pos+" হিসেবে":"")+(exp.co?" "+exp.co+"-এ":"")+" কাজ করার সময় "+(bullets[0]?clCapFirst(bullets[0])+"।":"দায়িত্বগুলো সুষ্ঠুভাবে পালন করেছি।")+(bullets[1]?" "+clCapFirst(bullets[1])+"।":""));
+  if(matched.length||skills.length)L.push("আমার দক্ষতার মধ্যে "+(matched.length?matched:skills).slice(0,4).join(", ")+" আপনার বিজ্ঞপ্তির সাথে মিলে যায়।");
+  L.push("");L.push("আমার আবেদনটি বিবেচনার জন্য ধন্যবাদ। আলোচনার সুযোগ পেলে খুশি হব। যোগাযোগ: "+phone+", "+email+"।");L.push("");L.push("বিনীত,");L.push(name);
+  return L.join("\n");
+ }
+ var L=[];
+ L.push(coc?"Dear Hiring Team at "+coc+",":"Dear Hiring Manager,");L.push("");
+ L.push((friendly?"I would love to be considered for":"I am writing to apply for")+" the "+post+" position"+(coc?" at "+coc:"")+". I am "+name+(e0&&e0.d?", with a "+e0.d+(e0.i?" from "+e0.i:"")+",":",")+" and I am eager to contribute my skills to your team.");L.push("");
+ if(exp){
+  var p2="In my role as "+(exp.pos||"a professional")+(exp.co?" at "+exp.co:"")+", I "+(bullets[0]?clCapFirst(bullets[0]):"handled my day-to-day responsibilities")+".";
+  if(bullets[1])p2+=" I also "+clCapFirst(bullets[1])+".";
+  L.push(p2);
+ }else{
+  L.push("Although I am early in my career, I have built a strong foundation through my academic work and practical projects.");
+ }
+ L.push("");
+ var p3="";
+ if(matched.length)p3="My key skills, including "+matched.slice(0,4).join(", ")+", match the requirements you have described.";
+ else if(skills.length)p3="My core skills include "+skills.slice(0,4).join(", ")+".";
+ if(shared.length)p3+=(p3?" ":"")+"My experience also covers "+shared.join(", ")+", which are relevant to this role.";
+ if(p3){L.push(p3);L.push("")}
+ L.push("Thank you for considering my application. I would welcome the opportunity to discuss how I can contribute to "+(coc||"your organisation")+". You can reach me at "+phone+" or "+email+".");
+ L.push("");L.push("Sincerely,");L.push(name);
+ return L.join("\n");
+}
+(function(){
+ var b=document.getElementById("clBtn");if(!b)return;
+ b.onclick=function(){
+  var o={company:document.getElementById("clCo").value,tone:document.getElementById("clTone").value,lang:document.getElementById("clLang").value};
+  var jd=document.getElementById("jd")?document.getElementById("jd").value:"";
+  document.getElementById("clOut").value=coverLetter(jd,o);
+ };
+ document.getElementById("clCopy").onclick=function(){
+  var t=document.getElementById("clOut");t.select();
+  try{navigator.clipboard.writeText(t.value)}catch(e){document.execCommand("copy")}
+ };
+ document.getElementById("clDl").onclick=function(){
+  var t=document.getElementById("clOut").value;if(!t.trim())return;
+  var fn="Cover-Letter-"+((D.name||"my").replace(/[^\w]+/g,"-"))+".txt";
+  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+t],{type:"text/plain;charset=utf-8"}));a.download=fn;document.body.appendChild(a);a.click();a.remove();
+ };
+})();
+function sigHTML(){return D.sig?'<img class="sig" src="'+D.sig+'" alt="স্বাক্ষর">':"__________"}
+function renderSig(){
+ var c=$("sig");if(!c)return;
+ c.innerHTML="<h2>স্বাক্ষর</h2><p class='atsnote'>স্বাক্ষরের ছবি আপলোড করুন (PNG বা JPG, সাদা বা স্বচ্ছ ব্যাকগ্রাউন্ড ভালো, সর্বোচ্চ ২ MB)। এটি সিভির ঘোষণার অংশে বসবে।</p>";
+ var row=document.createElement("div");row.className="row";
+ if(D.sig){var im=document.createElement("img");im.src=D.sig;im.alt="স্বাক্ষর";im.style.cssText="max-height:90px;max-width:260px;display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;margin-bottom:8px";row.appendChild(im);
+  var rm=document.createElement("button");rm.className="sm";rm.textContent="স্বাক্ষর মুছুন";rm.onclick=function(){D.sig="";save();renderSig();prev()};row.appendChild(rm)}
+ var inp=document.createElement("input");inp.type="file";inp.accept="image/png,image/jpeg";inp.id="sigIn";
+ inp.onchange=function(){
+  var f=inp.files&&inp.files[0];if(!f)return;
+  if(f.size>2*1024*1024){alert("ছবির আকার ২ MB-এর বেশি হতে পারবে না");inp.value="";return}
+  var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){
+   var sc=Math.min(1,600/im.width),cv=document.createElement("canvas");cv.width=Math.round(im.width*sc);cv.height=Math.round(im.height*sc);
+   cv.getContext("2d").drawImage(im,0,0,cv.width,cv.height);
+   D.sig=cv.toDataURL("image/png");save();renderSig();prev()};im.src=fr.result};fr.readAsDataURL(f)
+ };
+ row.appendChild(inp);c.appendChild(row);
+}
+function pro(){D.pro=true;$("pro").innerHTML=""}
+function gal(){var g=$("gal");g.innerHTML="";TP.forEach(function(t,i){var b=document.createElement("button");b.className="gi"+(D.t===i?" on":"");b.innerHTML='<div class="th">'+cv(i)+"</div><span>"+t[0]+"</span>";b.onclick=function(){D.t=i;save();prev();gal()};g.appendChild(b)})}
+$("pr").onclick=function(){if(!validateInfo()){step(0);return}var fr=document.createElement("iframe");fr.style.cssText="position:fixed;right:0;bottom:0;width:0;height:0;border:0";document.body.appendChild(fr);var d=fr.contentWindow.document;d.open();d.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>CV</title><style>@page{size:A4;margin:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{margin:0}.it,.kv,tr{break-inside:avoid}'+CVCSS+'</style></head><body>'+cv()+"</body></html>");d.close();setTimeout(function(){try{fr.contentWindow.focus();fr.contentWindow.print()}catch(e){alert("এই ভিউতে প্রিন্ট করা যাচ্ছে না")}setTimeout(function(){fr.remove()},60000)},500)};
+function chk(){var ex=D.exp.some(function(e){return e.pos||e.co}),L=[["নাম",D.name],["পদ",D.post],["মোবাইল",D.phone],["ইমেইল",D.email],["ঠিকানা",D.addr],["ছবি",D.photo],["অবজেক্টিভ",D.obj],["শিক্ষা",eduList().length],["অভিজ্ঞতা",ex],["সার্টিফিকেশন",D.cert.length],["ভাষা",D.lang.length],["দক্ষতা",D.skills],["শখ",D.hob],["ব্যক্তিগত বিবরণ",D.father||D.mother||D.nid||D.dob],["কাস্টম",D.cust.length],["রেফারেন্স",D.refs]];$("chk").innerHTML=L.map(function(x){return'<span class="chip'+(x[1]?" ok":"")+'">'+(x[1]?"✓ ":"○ ")+x[0]+"</span>"}).join("")}
+var ST=[["পরিচয়","ব্যক্তিগত তথ্য","নাম, যোগাযোগ, ছবি ও ক্যারিয়ার লক্ষ্য লিখুন"],["শিক্ষা","শিক্ষাগত যোগ্যতা","এসএসসি থেকে সর্বোচ্চ ডিগ্রি পর্যন্ত যোগ করুন"],["অভিজ্ঞতা","অভিজ্ঞতা ও দক্ষতা","অভিজ্ঞতা, সার্টিফিকেশন, দক্ষতা ও ভাষা"],["বিবরণ","ব্যক্তিগত বিবরণ","পিতা-মাতার নাম, NID ও রেফারেন্স"],["টেমপ্লেট","টেমপ্লেট বাছুন","একাধিক ডিজাইন থেকে পছন্দের একটি বেছে নিন"],["ডাউনলোড","প্রিভিউ ও PDF","সব তথ্য ঠিক আছে কিনা দেখে PDF নামান"]],MAP=[0,0,1,2,2,2,2,3,3,3,3],cur=0,cards=[].slice.call($("form").children);
+function bd(n){return n.toLocaleString("bn-BD")}
+function step(n){cur=Math.max(0,Math.min(5,n));cards.forEach(function(c,i){c.hidden=MAP[i]!==cur});$("v1").hidden=cur>3;$("v2").hidden=cur!==4;$("v3").hidden=cur!==5;
+ $("stp").innerHTML=ST.map(function(x,i){return'<button class="sd'+(i<cur?" done":i===cur?" on":"")+'" data-i="'+i+'"><i>'+(i<cur?"✓":bd(i+1))+"</i><span>"+x[0]+"</span></button>"}).join("");
+ $("sh").innerHTML='<div class="sh"><small>ধাপ '+bd(cur+1)+" / "+bd(6)+"</small><h2>"+ST[cur][1]+"</h2><p>"+ST[cur][2]+"</p></div>";
+ $("bk").style.visibility=cur?"visible":"hidden";$("nx").style.display=cur===5?"none":"";
+ if(cur===4)gal();if(cur===5){prev();chk()}window.scrollTo(0,0)}
+$("stp").onclick=function(e){var t=e.target.closest(".sd");if(t)step(+t.dataset.i)};
+$("bk").onclick=function(){step(cur-1)};$("nx").onclick=function(){if(cur===0&&!validateInfo())return;step(cur+1)};
+pro();prev();step(0);
+})();
+</script>
+</body>
+</html>
