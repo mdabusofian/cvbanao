@@ -329,6 +329,43 @@ footer .col a:hover{color:var(--gold);padding-left:6px}
 .steps.rv.in::before{transform:scaleX(1)}
 .stage,.aurora{will-change:transform}
 .stats b{font-variant-numeric:tabular-nums}
+
+/* ===== uniform card system (desktop + mobile) ===== */
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;align-items:stretch}
+.bento .card{grid-column:auto;display:flex;flex-direction:column;min-height:300px;padding:30px 26px}
+.bento .card p{flex:1}
+.bento .card .ic{margin-bottom:18px}
+.bento .card h3{font-size:19px;line-height:1.35;min-height:52px;display:flex;align-items:flex-start}
+.bento .card.dark h3{color:#fff}
+.bento .card.full,.bento .card.s4,.bento .card.s2{grid-column:auto}
+.tgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;max-width:1000px;margin:0 auto;align-items:stretch}
+.tgrid .tk{flex:none;width:auto;display:flex;flex-direction:column;padding:14px 14px 0;scroll-snap-align:none;min-width:0}
+.tgrid .tk .mini{height:auto;aspect-ratio:146/206;margin-bottom:14px}
+.tgrid .tk-t{flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding:0 4px 18px;min-height:76px}
+.tgrid .tk-t b{font-size:17px;line-height:1.3}
+.tgrid .tk-t span{font-size:14px;margin-top:4px;line-height:1.45}
+.tk-t{text-align:center}
+.tnote{margin-top:36px}
+@media (max-width:1040px){
+ .bento{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+ .bento .card{min-height:260px;padding:26px 22px}
+ .tgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+}
+@media (max-width:640px){
+ .bento{grid-template-columns:1fr;gap:14px}
+ .bento .card{display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:16px;align-items:start;min-height:0;padding:20px 18px;border-radius:22px}
+ .bento .card .ic{grid-row:1 / span 2;width:52px;height:52px;font-size:24px;border-radius:15px;margin:0}
+ .bento .card h3{grid-column:2;min-height:0;font-size:17px;margin:2px 0 4px}
+ .bento .card p{grid-column:2;font-size:14.5px;line-height:1.6;flex:none}
+ .bento .card:hover{transform:none}
+ .tgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+ .tgrid .tk{padding:10px 10px 0;border-radius:18px}
+ .tgrid .tk .mini{margin-bottom:10px}
+ .tgrid .tk-t{min-height:0;padding:0 2px 14px}
+ .tgrid .tk-t b{font-size:15px}
+ .tgrid .tk-t span{font-size:12.5px}
+ .tk:hover{transform:none}
+}
 </style>
 </head>
 <body>
@@ -392,32 +429,36 @@ footer .col a:hover{color:var(--gold);padding-left:6px}
 
 <section id="features" style="padding-top:40px">
  <div class="wrap">
-  <div class="head rv"><span class="eyebrow">সুবিধা</span><h2>চাকরির আবেদনের জন্য যা দরকার, সব আছে</h2><p class="sub">সাধারণ ফর্ম পূরণ করুন, বাকিটা আমরা সাজিয়ে দিচ্ছি।</p></div>
+  <div class="head rv"><span class="eyebrow">সুবিধা</span><h2>চাকরির আবেদনের জন্য যা দরকার, সব আছে</h2><p class="sub">সিভি বানানো থেকে শুরু করে ATS চেক, কভার লেটার ও ডাউনলোড, সবকিছু এক জায়গায়।</p></div>
   <div class="bento">
-   <div class="card dark s4 full rv"><div class="ic">🇧🇩</div><h3>বাংলাদেশি স্ট্যান্ডার্ড ফরম্যাট</h3><p>পিতা-মাতার নাম, NID, ধর্ম, বৈবাহিক অবস্থা, স্থায়ী ঠিকানা ও ডিক্লারেশন, সব আগের মতো সঠিক জায়গায়।</p><div class="tags"><span>NID</span><span>ডিক্লারেশন</span><span>রেফারেন্স</span></div></div>
-   <div class="card s2 rv"><div class="ic">🎓</div><h3>সঠিক শিক্ষা তথ্য</h3><p>বোর্ড, গ্রুপ, জিপিএ ৫.০০ আর সিজিপিএ ৪.০০, সব ড্রপডাউন থেকে।</p></div>
-   <div class="card s2 rv"><div class="ic">💼</div><h3>একাধিক অভিজ্ঞতা</h3><p>কোম্পানি, পদবি, তারিখ, "বর্তমানে কাজ করছি" আর বুলেট দায়িত্ব।</p></div>
-   <div class="card s2 rv"><div class="ic">🏅</div><h3>সার্টিফিকেশন</h3><p>যতগুলো কোর্স বা সার্টিফিকেট আছে, প্রতিষ্ঠান ও সালসহ যোগ করুন।</p></div>
-   <div class="card s2 rv"><div class="ic">🌐</div><h3>ভাষার স্তর</h3><p>Native, Fluent, Conversational বা Beginner, যেকোনো ভাষা।</p></div>
-   <div class="card s4 rv"><div class="ic">🧩</div><h3>কাস্টম তথ্য</h3><p>ড্রাইভিং লাইসেন্স বা অন্য যেকোনো তথ্য নিজের মতো করে যোগ করুন।</p></div>
-   <div class="card s4 rv"><div class="ic">🔒</div><h3>আপনার তথ্য আপনার কাছেই</h3><p>সিভির তথ্য আপনার নিজের ব্রাউজারে থাকে, কোথাও সার্ভারে পাঠানো হয় না।</p></div>
-   <div class="card s4 full rv"><div class="ic">📄</div><h3>এক ক্লিকে ডাউনলোড</h3><p>PDF, Word, PNG বা JPG। সিভি বড় হলে PDF নিজে থেকে একাধিক পেজে ভাগ হয়ে যায়।</p></div>
+   <article class="card dark rv"><div class="ic">🇧🇩</div><h3>বাংলাদেশি স্ট্যান্ডার্ড ফরম্যাট</h3><p>পিতা-মাতার নাম, NID, ধর্ম, বৈবাহিক অবস্থা, স্থায়ী ঠিকানা ও ডিক্লারেশন, সব সঠিক জায়গায়।</p></article>
+   <article class="card rv"><div class="ic">🎓</div><h3>সঠিক শিক্ষা তথ্য</h3><p>বোর্ড, গ্রুপ, GPA ৫.০০ ও CGPA ৪.০০ স্কেল, সব ড্রপডাউন থেকে বেছে নিন।</p></article>
+   <article class="card rv"><div class="ic">💼</div><h3>একাধিক অভিজ্ঞতা</h3><p>কোম্পানি, পদবি, তারিখ, "বর্তমানে কাজ করছি" আর বুলেট দায়িত্ব যোগ করুন।</p></article>
+   <article class="card rv"><div class="ic">🏅</div><h3>সার্টিফিকেশন</h3><p>যতগুলো কোর্স বা সার্টিফিকেট আছে, প্রতিষ্ঠান ও সালসহ যোগ করুন।</p></article>
+   <article class="card rv"><div class="ic">🌐</div><h3>ভাষার স্তর</h3><p>Native, Fluent, Conversational বা Beginner, যেকোনো ভাষা যোগ করুন।</p></article>
+   <article class="card rv"><div class="ic">🧩</div><h3>কাস্টম তথ্য</h3><p>ড্রাইভিং লাইসেন্স বা অন্য যেকোনো তথ্য নিজের মতো করে যোগ করুন।</p></article>
+   <article class="card rv"><div class="ic">🔒</div><h3>তথ্য আপনার কাছেই</h3><p>সিভির তথ্য আপনার নিজের ব্রাউজারে থাকে, কোনো সার্ভারে পাঠানো হয় না।</p></article>
+   <article class="card rv"><div class="ic">📄</div><h3>চারটি ফরম্যাটে ডাউনলোড</h3><p>PDF, Word, PNG ও JPG। সিভি বড় হলে পেজ নিজে থেকে ভাগ হয়, সেকশন কাটে না।</p></article>
+   <article class="card rv"><div class="ic">✅</div><h3>ATS চেক</h3><p>স্কোর ও সাজেশন দেখুন। চাকরির বিবরণ দিলে শব্দের মিলও দেখানো হয়। নিশ্চয়তা নয়, শুধু সাজেশন।</p></article>
+   <article class="card rv"><div class="ic">✍️</div><h3>কভার লেটার</h3><p>সিভির তথ্য ও চাকরির বিবরণ থেকে একটি খসড়া তৈরি হয়, যা নিজের মতো করে সম্পাদনা করা যায়।</p></article>
+   <article class="card rv"><div class="ic">🖋️</div><h3>স্বাক্ষর আপলোড</h3><p>আপনার স্বাক্ষরের ছবি আপলোড করুন, সেটি সিভির ঘোষণার অংশে বসবে।</p></article>
+   <article class="card rv"><div class="ic">📑</div><h3>স্বয়ংক্রিয় পেজ ভাগ</h3><p>সিভি লম্বা হলে সেকশন পরের পেজে যায়, মাঝখানে কাটে না। দ্বিতীয় পেজে নাম ও পদ থাকে।</p></article>
   </div>
  </div>
 </section>
 
 <section id="templates" class="tpl">
  <div class="wrap">
-  <div class="head rv"><span class="eyebrow">টেমপ্লেট</span><h2>আপনার পেশার সাথে মানানসই ডিজাইন</h2><p class="sub">ক্লাসিক, সাইডবার, ব্যানার, টাইমলাইন, সেরিফ, কার্ড ও আরও অনেক ধরন। নতুন টেমপ্লেট নিয়মিত যোগ হচ্ছে।</p></div>
-  <div class="shelf">
-   <div class="tk rv" style="--c:#0f3d6e"><div class="mini"><i></i></div><b>ক্লাসিক</b><span>ব্যাংক ও সরকারি চাকরি</span></div>
-   <div class="tk rv" style="--c:#0b6b4f"><div class="mini side"><i></i></div><b>সাইডবার</b><span>আধুনিক ও গোছানো</span></div>
-   <div class="tk rv" style="--c:#3730a3"><div class="mini"><i></i></div><b>ব্যানার</b><span>আত্মবিশ্বাসী লুক</span></div>
-   <div class="tk rv" style="--c:#0f766e"><div class="mini line"><i></i></div><b>টাইমলাইন</b><span>অভিজ্ঞতা বোঝাতে সেরা</span></div>
-   <div class="tk rv" style="--c:#7f1d1d"><div class="mini"><i></i></div><b>সেরিফ</b><span>পরিশীলিত ও ক্লাসিক</span></div>
-   <div class="tk rv" style="--c:#0369a1"><div class="mini dot"><i></i></div><b>কার্ড</b><span>হালকা ও আধুনিক</span></div>
+  <div class="head rv"><span class="eyebrow">টেমপ্লেট</span><h2>আপনার পেশার সাথে মানানসই ডিজাইন</h2><p class="sub">মোট ২০টি টেমপ্লেট। ৫টি ক্লাসিক ধাঁচের, প্রতিটির আলাদা রঙ ও লেআউট। সাইডবার, ব্যানার, টাইমলাইন ও কার্ড ডিজাইনও আছে।</p></div>
+  <div class="tgrid">
+   <article class="tk rv" style="--c:#1e40af"><div class="mini"><i></i></div><div class="tk-t"><b>ক্লাসিক রয়্যাল ব্লু</b><span>ব্যাংক ও সরকারি চাকরি</span></div></article>
+   <article class="tk rv" style="--c:#0b6b4f"><div class="mini side"><i></i></div><div class="tk-t"><b>সাইডবার</b><span>আধুনিক ও গোছানো</span></div></article>
+   <article class="tk rv" style="--c:#3730a3"><div class="mini"><i></i></div><div class="tk-t"><b>ব্যানার</b><span>আত্মবিশ্বাসী লুক</span></div></article>
+   <article class="tk rv" style="--c:#166534"><div class="mini line"><i></i></div><div class="tk-t"><b>ক্লাসিক ফরেস্ট</b><span>সবুজ, কেন্দ্রীয় শিরোনাম</span></div></article>
+   <article class="tk rv" style="--c:#7f1d1d"><div class="mini"><i></i></div><div class="tk-t"><b>সেরিফ</b><span>পরিশীলিত ও ক্লাসিক</span></div></article>
+   <article class="tk rv" style="--c:#0369a1"><div class="mini dot"><i></i></div><div class="tk-t"><b>কার্ড</b><span>হালকা ও আধুনিক</span></div></article>
   </div>
-  <p class="tnote rv">এখানে দেখানো নমুনাগুলো ছাড়াও আরও টেমপ্লেট আছে। সব টেমপ্লেটে একই তথ্য থাকে।</p>
+  <p class="tnote rv">এখানে ৬টি নমুনা দেখানো হয়েছে। বাকি টেমপ্লেট সিভি বানানোর ধাপে পাবেন।</p>
  </div>
 </section>
 
